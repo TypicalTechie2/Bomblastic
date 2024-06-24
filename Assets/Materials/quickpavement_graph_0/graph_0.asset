@@ -1,0 +1,1035 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed5864476f84ce4b85454db09ca4eaa, type: 3}
+  m_Name: graph_0
+  m_EditorClassIdentifier: 
+  AssetPath: Assets/Materials/quickpavement.sbsar
+  RawData: {fileID: -244192453324840774, guid: 81338c38e6ec47d48aeaa15a3d4eb8e2, type: 3}
+  Name: graph_0
+  IsRoot: 1
+  FlagedForDelete: 0
+  GUID: cd139869-ed5d-4e32-ad71-6494a44aac2d
+  Index: 0
+  Input:
+  - rid: 6492440757113716736
+  - rid: 6492440757113716737
+  - rid: 6492440757113716738
+  - rid: 6492440757113716739
+  - rid: 6492440757113716740
+  - rid: 6492440757113716741
+  - rid: 6492440757113716742
+  - rid: 6492440757113716743
+  - rid: 6492440757113716744
+  - rid: 6492440757113716745
+  - rid: 6492440757113716746
+  - rid: 6492440757113716747
+  - rid: 6492440757113716748
+  - rid: 6492440757113716749
+  - rid: 6492440757113716750
+  - rid: 6492440757113716751
+  - rid: 6492440757113716752
+  - rid: 6492440757113716753
+  - rid: 6492440757113716754
+  - rid: 6492440757113716755
+  - rid: 6492440757113716756
+  - rid: 6492440757113716757
+  - rid: 6492440757113716758
+  - rid: 6492440757113716759
+  - rid: 6492440757113716760
+  - rid: 6492440757113716761
+  - rid: 6492440757113716762
+  - rid: 6492440757113716763
+  - rid: 6492440757113716764
+  - rid: 6492440757113716765
+  - rid: 6492440757113716766
+  - rid: 6492440757113716767
+  - rid: 6492440757113716768
+  - rid: 6492440757113716769
+  Output:
+  - Index: 0
+    VirtualOutputIndex: 6
+    Description:
+      Identifier: basecolor
+      Label: basecolor
+      Index: 0
+      Type: 8
+      Channel: baseColor
+    OutputTexture: {fileID: 2800000, guid: 7b552f5588355aa4d8c11775fe05f035, type: 3}
+    sRGB: 1
+    IsVirtual: 0
+    IsAlphaAssignable: 1
+    AlphaChannel: 
+    InvertAssignedAlpha: 0
+    Flags: 0
+    MaterialTextureTarget: _BaseMap
+  - Index: 1
+    VirtualOutputIndex: 7
+    Description:
+      Identifier: normal
+      Label: normal
+      Index: 1
+      Type: 8
+      Channel: normal
+    OutputTexture: {fileID: 2800000, guid: 629a715cac597504d821dc4c1612c3fb, type: 3}
+    sRGB: 0
+    IsVirtual: 0
+    IsAlphaAssignable: 0
+    AlphaChannel: 
+    InvertAssignedAlpha: 0
+    Flags: 0
+    MaterialTextureTarget: _BumpMap
+  - Index: 2
+    VirtualOutputIndex: 8
+    Description:
+      Identifier: roughness
+      Label: roughness
+      Index: 2
+      Type: 8
+      Channel: roughness
+    OutputTexture: {fileID: 0}
+    sRGB: 0
+    IsVirtual: 0
+    IsAlphaAssignable: 1
+    AlphaChannel: 
+    InvertAssignedAlpha: 0
+    Flags: 0
+    MaterialTextureTarget: _RoughnessMap
+  - Index: 3
+    VirtualOutputIndex: 9
+    Description:
+      Identifier: metallic
+      Label: metallic
+      Index: 3
+      Type: 8
+      Channel: metallic
+    OutputTexture: {fileID: 2800000, guid: ee4c827b8882600448021085e21964a0, type: 3}
+    sRGB: 0
+    IsVirtual: 0
+    IsAlphaAssignable: 1
+    AlphaChannel: roughness
+    InvertAssignedAlpha: 1
+    Flags: 0
+    MaterialTextureTarget: _MetallicGlossMap
+  - Index: 4
+    VirtualOutputIndex: 10
+    Description:
+      Identifier: height
+      Label: height
+      Index: 4
+      Type: 8
+      Channel: height
+    OutputTexture: {fileID: 2800000, guid: 9c05c8cd41e82de4193fa63c382e7b1a, type: 3}
+    sRGB: 1
+    IsVirtual: 0
+    IsAlphaAssignable: 1
+    AlphaChannel: 
+    InvertAssignedAlpha: 0
+    Flags: 0
+    MaterialTextureTarget: _ParallaxMap
+  - Index: 5
+    VirtualOutputIndex: 11
+    Description:
+      Identifier: ambientocclusion
+      Label: ambientocclusion
+      Index: 5
+      Type: 8
+      Channel: ambientOcclusion
+    OutputTexture: {fileID: 2800000, guid: 45c77c9cd13bff44c8e392dc5cbab910, type: 3}
+    sRGB: 0
+    IsVirtual: 0
+    IsAlphaAssignable: 1
+    AlphaChannel: 
+    InvertAssignedAlpha: 0
+    Flags: 0
+    MaterialTextureTarget: _OcclusionMap
+  HasPhysicalSize: 1
+  PhysicalSize: {x: 200, y: 200, z: 2}
+  EnablePhysicalSize: 0
+  Thumbnail: 
+  HasThumbnail: 0
+  CurrentStatePreset: 
+  IsRuntimeOnly: 0
+  GenerateAllOutputs: 0
+  GenerateAllMipmaps: 1
+  OutputMaterial: {fileID: 2100000, guid: 0421a03ddb144f9448970ec79a97e4da, type: 2}
+  DefaultPreset: " <sbspreset pkgurl=\"pkg://QuickPavement\" label=\"\" >\n  <presetinput
+    identifier=\"$outputsize\" uid=\"3958302921\" type=\"8\" value=\"10,10\" />\n
+    </sbspreset>\n"
+  MaterialShader: Universal Render Pipeline/Lit
+  RenderTextures: 0
+  OutputRemaped: 0
+  Presets:
+  - Info:
+      Label: Dumble
+      Description: 
+      URL: pkg://QuickPavement
+    PresetIndex: 0
+    PresetValue: 
+    NativePreset: 1
+  - Info:
+      Label: Cross Dumble
+      Description: 
+      URL: pkg://QuickPavement
+    PresetIndex: 1
+    PresetValue: 
+    NativePreset: 1
+  - Info:
+      Label: Round Dumble
+      Description: 
+      URL: pkg://QuickPavement
+    PresetIndex: 2
+    PresetValue: 
+    NativePreset: 1
+  - Info:
+      Label: Hexagon
+      Description: 
+      URL: pkg://QuickPavement
+    PresetIndex: 3
+    PresetValue: 
+    NativePreset: 1
+  - Info:
+      Label: Trihex Linear
+      Description: 
+      URL: pkg://QuickPavement
+    PresetIndex: 4
+    PresetValue: 
+    NativePreset: 1
+  - Info:
+      Label: Trihex Curve
+      Description: 
+      URL: pkg://QuickPavement
+    PresetIndex: 5
+    PresetValue: 
+    NativePreset: 1
+  - Info:
+      Label: Mirror
+      Description: 
+      URL: pkg://QuickPavement
+    PresetIndex: 6
+    PresetValue: 
+    NativePreset: 1
+  - Info:
+      Label: Wave
+      Description: 
+      URL: pkg://QuickPavement
+    PresetIndex: 7
+    PresetValue: 
+    NativePreset: 1
+  - Info:
+      Label: Unipaver
+      Description: 
+      URL: pkg://QuickPavement
+    PresetIndex: 8
+    PresetValue: 
+    NativePreset: 1
+  - Info:
+      Label: Unipaver Cross
+      Description: 
+      URL: pkg://QuickPavement
+    PresetIndex: 9
+    PresetValue: 
+    NativePreset: 1
+  - Info:
+      Label: Brick
+      Description: 
+      URL: pkg://QuickPavement
+    PresetIndex: 10
+    PresetValue: 
+    NativePreset: 1
+  - Info:
+      Label: Square
+      Description: 
+      URL: pkg://QuickPavement
+    PresetIndex: 11
+    PresetValue: 
+    NativePreset: 1
+  - Info:
+      Label: Random Rectangle
+      Description: 
+      URL: pkg://QuickPavement
+    PresetIndex: 12
+    PresetValue: 
+    NativePreset: 1
+  - Info:
+      Label: Geometric Pattern 01
+      Description: 
+      URL: pkg://QuickPavement
+    PresetIndex: 13
+    PresetValue: 
+    NativePreset: 1
+  - Info:
+      Label: Geometric Pattern 02
+      Description: 
+      URL: pkg://QuickPavement
+    PresetIndex: 14
+    PresetValue: 
+    NativePreset: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: 6492440757113716736
+      type: {class: SubstanceInputInt2, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 0
+        Description:
+          Identifier: $outputsize
+          Label: $outputsize
+          GuiGroup: 
+          GuiDescription: 
+          Type: 5
+          WidgetType: 0
+        Data: {x: 10, y: 10}
+        NumericalDescription:
+          DefaultValue: {x: 8, y: 8}
+          MinValue: {x: 0, y: 0}
+          MaxValue: {x: 1, y: 1}
+          SliderClamp: 0
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6492440757113716737
+      type: {class: SubstanceInputInt, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 1
+        Description:
+          Identifier: $randomseed
+          Label: $randomseed
+          GuiGroup: 
+          GuiDescription: 
+          Type: 4
+          WidgetType: 0
+        Data: 0
+        NumericalDescription:
+          DefaultValue: 0
+          MinValue: 0
+          MaxValue: 1
+          SliderStep: 0.01
+          SliderClamp: 0
+          LabelFalse: 
+          LabelTrue: 
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6492440757113716738
+      type: {class: SubstanceInputInt, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 2
+        Description:
+          Identifier: design
+          Label: Design
+          GuiGroup: Tile
+          GuiDescription: 
+          Type: 4
+          WidgetType: 6
+        Data: 7
+        NumericalDescription:
+          DefaultValue: 7
+          MinValue: 0
+          MaxValue: 0
+          SliderStep: 0
+          SliderClamp: 0
+          LabelFalse: 
+          LabelTrue: 
+          EnumValueCount: 16
+          EnumValues:
+          - Value: 1
+            Label: Dumble
+          - Value: 2
+            Label: Cross Dumble
+          - Value: 3
+            Label: Round Dumble
+          - Value: 4
+            Label: Hexagon
+          - Value: 5
+            Label: Trihex Linear
+          - Value: 6
+            Label: Trihex Curve
+          - Value: 7
+            Label: Mirror
+          - Value: 8
+            Label: Wave
+          - Value: 9
+            Label: Unipaver
+          - Value: 10
+            Label: Unipaver Cross
+          - Value: 11
+            Label: Brick
+          - Value: 12
+            Label: Square
+          - Value: 13
+            Label: Random Rectangle
+          - Value: 14
+            Label: Geometric Pattern 01
+          - Value: 15
+            Label: Geometric Pattern 02
+          - Value: 16
+            Label: Custom
+    - rid: 6492440757113716739
+      type: {class: SubstanceInputInt, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 3
+        Description:
+          Identifier: tile_x
+          Label: Tile X
+          GuiGroup: Tile
+          GuiDescription: Amount of patterns on the X axis.
+          Type: 4
+          WidgetType: 1
+        Data: 20
+        NumericalDescription:
+          DefaultValue: 20
+          MinValue: 1
+          MaxValue: 64
+          SliderStep: 1
+          SliderClamp: 0
+          LabelFalse: 
+          LabelTrue: 
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6492440757113716740
+      type: {class: SubstanceInputInt, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 4
+        Description:
+          Identifier: tile_y
+          Label: Tile Y
+          GuiGroup: Tile
+          GuiDescription: Amount of patterns on the Y axis.
+          Type: 4
+          WidgetType: 1
+        Data: 10
+        NumericalDescription:
+          DefaultValue: 10
+          MinValue: 1
+          MaxValue: 64
+          SliderStep: 1
+          SliderClamp: 0
+          LabelFalse: 
+          LabelTrue: 
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6492440757113716741
+      type: {class: SubstanceInputFloat, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 5
+        Description:
+          Identifier: offset
+          Label: Offset
+          GuiGroup: Tile
+          GuiDescription: 
+          Type: 0
+          WidgetType: 1
+        Data: 0.5
+        NumericalDescription:
+          DefaultValue: 0.5
+          MinValue: 0
+          MaxValue: 1
+          SliderStep: 0.01
+          SliderClamp: 1
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6492440757113716742
+      type: {class: SubstanceInputInt, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 6
+        Description:
+          Identifier: vertical_offset
+          Label: Vertical Offset
+          GuiGroup: Tile
+          GuiDescription: Patterns are offset on the vertical axis instead of the
+            horizontal axis.
+          Type: 4
+          WidgetType: 4
+        Data: 1
+        NumericalDescription:
+          DefaultValue: 1
+          MinValue: 0
+          MaxValue: 0
+          SliderStep: 0
+          SliderClamp: 0
+          LabelFalse: 
+          LabelTrue: 
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6492440757113716743
+      type: {class: SubstanceInputFloat, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 7
+        Description:
+          Identifier: global_scale
+          Label: Global Scale
+          GuiGroup: Tile
+          GuiDescription: 
+          Type: 0
+          WidgetType: 1
+        Data: 1
+        NumericalDescription:
+          DefaultValue: 1
+          MinValue: 0
+          MaxValue: 2
+          SliderStep: 0.01
+          SliderClamp: 0
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6492440757113716744
+      type: {class: SubstanceInputFloat2, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 8
+        Description:
+          Identifier: pattern_scale
+          Label: Pattern Scale
+          GuiGroup: Tile
+          GuiDescription: 
+          Type: 1
+          WidgetType: 1
+        Data: {x: 2, y: 1}
+        NumericalDescription:
+          DefaultValue: {x: 2, y: 1}
+          MinValue: {x: 0, y: 0}
+          MaxValue: {x: 1, y: 1}
+          SliderStep: 0.01
+          SliderClamp: 0
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6492440757113716745
+      type: {class: SubstanceInputFloat, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 9
+        Description:
+          Identifier: edge_extrude
+          Label: Edge Extrude
+          GuiGroup: Tile
+          GuiDescription: 
+          Type: 0
+          WidgetType: 1
+        Data: -0.01
+        NumericalDescription:
+          DefaultValue: -0.01
+          MinValue: -0.5
+          MaxValue: 0.5
+          SliderStep: 0.01
+          SliderClamp: 1
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6492440757113716746
+      type: {class: SubstanceInputTexture, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 10
+        Description:
+          Identifier: tile_color_pattern
+          Label: Tile Color Pattern
+          GuiGroup: Color
+          GuiDescription: 
+          Type: 8
+          WidgetType: 7
+        Data: {fileID: 0}
+    - rid: 6492440757113716747
+      type: {class: SubstanceInputFloat4, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 11
+        Description:
+          Identifier: primary_color
+          Label: Primary Color
+          GuiGroup: Color
+          GuiDescription: 
+          Type: 3
+          WidgetType: 3
+        Data: {x: 0.901554, y: 0.523771, z: 0.34423, w: 1}
+        NumericalDescription:
+          DefaultValue: {x: 0.901554, y: 0.523771, z: 0.34423, w: 1}
+          MinValue: {x: 0, y: 0, z: 0, w: 0}
+          MaxValue: {x: 0, y: 0, z: 0, w: 0}
+          SliderStep: 0
+          SliderClamp: 0
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6492440757113716748
+      type: {class: SubstanceInputFloat4, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 12
+        Description:
+          Identifier: primary_discolor
+          Label: Primary Discolor
+          GuiGroup: Color
+          GuiDescription: 
+          Type: 3
+          WidgetType: 3
+        Data: {x: 0.0226095, y: 0.0829016, z: 0.0238591, w: 1}
+        NumericalDescription:
+          DefaultValue: {x: 0.0226095, y: 0.0829016, z: 0.0238591, w: 1}
+          MinValue: {x: 0, y: 0, z: 0, w: 0}
+          MaxValue: {x: 0, y: 0, z: 0, w: 0}
+          SliderStep: 0
+          SliderClamp: 0
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6492440757113716749
+      type: {class: SubstanceInputFloat4, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 13
+        Description:
+          Identifier: highlight_color
+          Label: Highlight Color
+          GuiGroup: Color
+          GuiDescription: 
+          Type: 3
+          WidgetType: 3
+        Data: {x: 0.623529, y: 0.623529, z: 0.623529, w: 1}
+        NumericalDescription:
+          DefaultValue: {x: 0.623529, y: 0.623529, z: 0.623529, w: 1}
+          MinValue: {x: 0, y: 0, z: 0, w: 0}
+          MaxValue: {x: 0, y: 0, z: 0, w: 0}
+          SliderStep: 0
+          SliderClamp: 0
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6492440757113716750
+      type: {class: SubstanceInputFloat4, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 14
+        Description:
+          Identifier: highlight_discolor
+          Label: Highlight Discolor
+          GuiGroup: Color
+          GuiDescription: 
+          Type: 3
+          WidgetType: 3
+        Data: {x: 0.309804, y: 0.309804, z: 0.309804, w: 1}
+        NumericalDescription:
+          DefaultValue: {x: 0.309804, y: 0.309804, z: 0.309804, w: 1}
+          MinValue: {x: 0, y: 0, z: 0, w: 0}
+          MaxValue: {x: 0, y: 0, z: 0, w: 0}
+          SliderStep: 0
+          SliderClamp: 0
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6492440757113716751
+      type: {class: SubstanceInputInt, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 15
+        Description:
+          Identifier: discoloration_pattern
+          Label: Discoloration Pattern
+          GuiGroup: Color
+          GuiDescription: 
+          Type: 4
+          WidgetType: 6
+        Data: 1
+        NumericalDescription:
+          DefaultValue: 1
+          MinValue: 0
+          MaxValue: 0
+          SliderStep: 0
+          SliderClamp: 0
+          LabelFalse: 
+          LabelTrue: 
+          EnumValueCount: 5
+          EnumValues:
+          - Value: 1
+            Label: Concrete
+          - Value: 2
+            Label: Dirt
+          - Value: 3
+            Label: Rust
+          - Value: 4
+            Label: Scratches
+          - Value: 5
+            Label: Clouds
+    - rid: 6492440757113716752
+      type: {class: SubstanceInputFloat, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 16
+        Description:
+          Identifier: discoloration_contrast
+          Label: Discoloration Contrast
+          GuiGroup: Color
+          GuiDescription: 
+          Type: 0
+          WidgetType: 1
+        Data: 0.8
+        NumericalDescription:
+          DefaultValue: 0.8
+          MinValue: 0
+          MaxValue: 1
+          SliderStep: 0.01
+          SliderClamp: 1
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6492440757113716753
+      type: {class: SubstanceInputFloat, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 17
+        Description:
+          Identifier: discoloration_intenstity
+          Label: Discoloration Intensity
+          GuiGroup: Color
+          GuiDescription: 
+          Type: 0
+          WidgetType: 1
+        Data: 0.5
+        NumericalDescription:
+          DefaultValue: 0.5
+          MinValue: 0
+          MaxValue: 1
+          SliderStep: 0.01
+          SliderClamp: 1
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6492440757113716754
+      type: {class: SubstanceInputFloat4, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 18
+        Description:
+          Identifier: gap_primary_color
+          Label: Gap Primary Color
+          GuiGroup: Color
+          GuiDescription: 
+          Type: 3
+          WidgetType: 3
+        Data: {x: 0.25098, y: 0.25098, z: 0.25098, w: 1}
+        NumericalDescription:
+          DefaultValue: {x: 0.25098, y: 0.25098, z: 0.25098, w: 1}
+          MinValue: {x: 0, y: 0, z: 0, w: 0}
+          MaxValue: {x: 0, y: 0, z: 0, w: 0}
+          SliderStep: 0
+          SliderClamp: 0
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6492440757113716755
+      type: {class: SubstanceInputFloat4, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 19
+        Description:
+          Identifier: gap_secondary_color
+          Label: Gap Secondary Color
+          GuiGroup: Color
+          GuiDescription: 
+          Type: 3
+          WidgetType: 3
+        Data: {x: 0.12549, y: 0.12549, z: 0.12549, w: 1}
+        NumericalDescription:
+          DefaultValue: {x: 0.12549, y: 0.12549, z: 0.12549, w: 1}
+          MinValue: {x: 0, y: 0, z: 0, w: 0}
+          MaxValue: {x: 0, y: 0, z: 0, w: 0}
+          SliderStep: 0
+          SliderClamp: 0
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6492440757113716756
+      type: {class: SubstanceInputFloat, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 20
+        Description:
+          Identifier: gap_color_range
+          Label: Gap Color Range
+          GuiGroup: Color
+          GuiDescription: 
+          Type: 0
+          WidgetType: 1
+        Data: 1
+        NumericalDescription:
+          DefaultValue: 1
+          MinValue: 0
+          MaxValue: 1
+          SliderStep: 0.01
+          SliderClamp: 1
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6492440757113716757
+      type: {class: SubstanceInputFloat, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 21
+        Description:
+          Identifier: gap_color_intensity
+          Label: Gap Color Intensity
+          GuiGroup: Color
+          GuiDescription: 
+          Type: 0
+          WidgetType: 1
+        Data: 0.5
+        NumericalDescription:
+          DefaultValue: 0.5
+          MinValue: 0
+          MaxValue: 1
+          SliderStep: 0.01
+          SliderClamp: 1
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6492440757113716758
+      type: {class: SubstanceInputFloat, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 22
+        Description:
+          Identifier: bevel_distance
+          Label: Bevel Distance
+          GuiGroup: Bevel
+          GuiDescription: 
+          Type: 0
+          WidgetType: 1
+        Data: -0.008
+        NumericalDescription:
+          DefaultValue: -0.008
+          MinValue: -0.2
+          MaxValue: 0
+          SliderStep: 0.01
+          SliderClamp: 1
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6492440757113716759
+      type: {class: SubstanceInputInt, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 23
+        Description:
+          Identifier: bevel_type
+          Label: Bevel Type
+          GuiGroup: Bevel
+          GuiDescription: 
+          Type: 4
+          WidgetType: 6
+        Data: 2
+        NumericalDescription:
+          DefaultValue: 2
+          MinValue: 0
+          MaxValue: 0
+          SliderStep: 0
+          SliderClamp: 0
+          LabelFalse: 
+          LabelTrue: 
+          EnumValueCount: 3
+          EnumValues:
+          - Value: 1
+            Label: None
+          - Value: 2
+            Label: Linear
+          - Value: 3
+            Label: Step
+    - rid: 6492440757113716760
+      type: {class: SubstanceInputFloat, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 24
+        Description:
+          Identifier: etc_safe_area
+          Label: Etch Safe Area
+          GuiGroup: Etch
+          GuiDescription: 
+          Type: 0
+          WidgetType: 1
+        Data: -0.015
+        NumericalDescription:
+          DefaultValue: -0.015
+          MinValue: -0.5
+          MaxValue: 0.5
+          SliderStep: 0.01
+          SliderClamp: 1
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6492440757113716761
+      type: {class: SubstanceInputInt, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 25
+        Description:
+          Identifier: etch_tile_amount
+          Label: Etch Tile Amount
+          GuiGroup: Etch
+          GuiDescription: 
+          Type: 4
+          WidgetType: 1
+        Data: 192
+        NumericalDescription:
+          DefaultValue: 192
+          MinValue: 1
+          MaxValue: 64
+          SliderStep: 1
+          SliderClamp: 0
+          LabelFalse: 
+          LabelTrue: 
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6492440757113716762
+      type: {class: SubstanceInputInt, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 26
+        Description:
+          Identifier: etch_pattern
+          Label: Etch Pattern
+          GuiGroup: Etch
+          GuiDescription: 
+          Type: 4
+          WidgetType: 6
+        Data: 3
+        NumericalDescription:
+          DefaultValue: 3
+          MinValue: 0
+          MaxValue: 0
+          SliderStep: 0
+          SliderClamp: 0
+          LabelFalse: 
+          LabelTrue: 
+          EnumValueCount: 8
+          EnumValues:
+          - Value: 1
+            Label: Circle
+          - Value: 2
+            Label: Hemisphere
+          - Value: 3
+            Label: Square
+          - Value: 4
+            Label: Pyramid
+          - Value: 5
+            Label: Grade Square
+          - Value: 6
+            Label: Waves
+          - Value: 7
+            Label: Crest
+          - Value: 8
+            Label: Capsule
+    - rid: 6492440757113716763
+      type: {class: SubstanceInputFloat, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 27
+        Description:
+          Identifier: etch_pattern_offset
+          Label: Etch Pattern Offset
+          GuiGroup: Etch
+          GuiDescription: 
+          Type: 0
+          WidgetType: 1
+        Data: 0
+        NumericalDescription:
+          DefaultValue: 0
+          MinValue: 0
+          MaxValue: 1
+          SliderStep: 0.01
+          SliderClamp: 0
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6492440757113716764
+      type: {class: SubstanceInputFloat, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 28
+        Description:
+          Identifier: etch_pattern_scale
+          Label: Etch Pattern Scale
+          GuiGroup: Etch
+          GuiDescription: 
+          Type: 0
+          WidgetType: 1
+        Data: 0.6
+        NumericalDescription:
+          DefaultValue: 0.6
+          MinValue: 0
+          MaxValue: 2
+          SliderStep: 0.01
+          SliderClamp: 0
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6492440757113716765
+      type: {class: SubstanceInputInt, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 29
+        Description:
+          Identifier: etch_height
+          Label: Etch on Height Map?
+          GuiGroup: Etch
+          GuiDescription: True returns the first input, False returns the second
+            input.
+          Type: 4
+          WidgetType: 4
+        Data: 0
+        NumericalDescription:
+          DefaultValue: 0
+          MinValue: 0
+          MaxValue: 0
+          SliderStep: 0
+          SliderClamp: 0
+          LabelFalse: 
+          LabelTrue: 
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6492440757113716766
+      type: {class: SubstanceInputFloat, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 30
+        Description:
+          Identifier: normal_map_intensity
+          Label: Normal Map intensity
+          GuiGroup: Global
+          GuiDescription: 
+          Type: 0
+          WidgetType: 1
+        Data: 1
+        NumericalDescription:
+          DefaultValue: 1
+          MinValue: 0
+          MaxValue: 3
+          SliderStep: 0.01
+          SliderClamp: 0
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6492440757113716767
+      type: {class: SubstanceInputFloat, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 31
+        Description:
+          Identifier: roughness
+          Label: Roughness Value
+          GuiGroup: Global
+          GuiDescription: 
+          Type: 0
+          WidgetType: 3
+        Data: 0.868421
+        NumericalDescription:
+          DefaultValue: 0.868421
+          MinValue: 0
+          MaxValue: 0
+          SliderStep: 0
+          SliderClamp: 0
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6492440757113716768
+      type: {class: SubstanceInputFloat, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 32
+        Description:
+          Identifier: roughness_grunge_amount
+          Label: Roughness Grunge Amount
+          GuiGroup: Global
+          GuiDescription: 
+          Type: 0
+          WidgetType: 1
+        Data: 0.5
+        NumericalDescription:
+          DefaultValue: 0.5
+          MinValue: 0
+          MaxValue: 1
+          SliderStep: 0.01
+          SliderClamp: 1
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6492440757113716769
+      type: {class: SubstanceInputFloat, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 33
+        Description:
+          Identifier: metallic
+          Label: Metallic
+          GuiGroup: Global
+          GuiDescription: 
+          Type: 0
+          WidgetType: 3
+        Data: 0
+        NumericalDescription:
+          DefaultValue: 0
+          MinValue: 0
+          MaxValue: 0
+          SliderStep: 0
+          SliderClamp: 0
+          EnumValueCount: 0
+          EnumValues: []

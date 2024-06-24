@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Brick
+  - Wall
+  - Ground
+  - Block
+  - Portal
+  - Enemy
+  - Key
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -11,11 +19,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - BombBullet
+  - Key
+  - Enemy
+  - Player
+  - Completed
   - 
   - 
   - 
