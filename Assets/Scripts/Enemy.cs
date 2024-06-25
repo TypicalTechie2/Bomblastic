@@ -89,10 +89,12 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             isCollidedWithPlayer = true;
+            gameObject.layer = 10;
         }
 
         if (other.gameObject.CompareTag("Bullet"))
         {
+            Debug.Log("Collided with Bullet");
             isAlive = false; // Mark the enemy as dead
             Destroy(other.gameObject);
             gameObject.layer = 10;

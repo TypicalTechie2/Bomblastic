@@ -21,10 +21,12 @@ public class PlayerController : MonoBehaviour
     public bool bombPlanted;
     public bool keyObtained;
     public bool isGameActive;
+    public bool enteredPortal = false;
     public PlayerCamera playerCameraScript;
     public Rigidbody playerRb;
     public NavMeshAgent playerNavMesh;
     public ParticleSystem[] dustTrail;
+    public SceneTransition sceneTransitionScript;
 
     private void Awake()
     {
@@ -45,7 +47,7 @@ public class PlayerController : MonoBehaviour
     {
         MovePlayer();
 
-        if (Input.GetKeyDown(KeyCode.Space) && !bombPlanted)
+        if (Input.GetKeyDown(KeyCode.Space) && !bombPlanted && !enteredPortal)
         {
             StartCoroutine(PlantTheBomb());
         }
@@ -53,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer()
     {
-        if (!playerCameraScript.isMovingCamera && isGameActive)
+        if (!playerCameraScript.isMovingCamera && isGameActive && !enteredPortal)
         {
             horizontalInput = Input.GetAxis("Horizontal");
             verticalInput = Input.GetAxis("Vertical");
@@ -107,7 +109,10 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Portal"))
         {
+            enteredPortal = true;
             Debug.Log("Entered Portal");
+            StartCoroutine(RotateOnPortalEnter());
+            StartCoroutine(sceneTransitionScript.EndScreenTransition());
         }
 
         if (other.gameObject.CompareTag("Key"))
@@ -191,6 +196,31 @@ public class PlayerController : MonoBehaviour
         }
 
         // Ensure exact rotation to 0 degrees after the loop
-        transform.rotation = Quaternion.identity;
+        transform.rotation = Quaternion.Euler(0, 180, 0);
+
+        yield return new WaitForSeconds(1f);
+
+        sceneTransitionScript.transitionAnim.SetTrigger("end");
+    }
+
+    private IEnumerator RotateOnPortalEnter()
+    {
+        float jumpDistance = 5f;
+        Vector3 originalPosition = transform.position;
+        Vector3 newPosition = originalPosition + transform.forward * jumpDistance;
+
+        float elapsedTime = 2f;
+
+        while (enteredPortal)
+        {
+            // Linearly interpolate position to create a smooth jump effect
+            transform.position = Vector3.Lerp(originalPosition, newPosition, elapsedTime / 5f);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure the player is exactly at the new position at the end
+        transform.position = newPosition;
+
     }
 }
