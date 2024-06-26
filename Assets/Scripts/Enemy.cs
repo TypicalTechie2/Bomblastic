@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public Transform player;
     public float patrolSpeed = 2.0f;
     private NavMeshAgent agent;
+    private Rigidbody enemyRb;
     public bool isCollidingWithEnemy;
     public bool isPlayerVisible;
     public bool isCollidedWithPlayer;
@@ -20,6 +21,7 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        enemyRb = GetComponent<Rigidbody>();
     }
 
     // Start is called before the first frame update
@@ -60,8 +62,7 @@ public class Enemy : MonoBehaviour
 
                 if (isCollidingWithEnemy)
                 {
-                    GoToRandomWaypoint();
-                    isCollidingWithEnemy = false;
+                    SwitchWaypointOnCollision();
                 }
             }
         }
@@ -95,13 +96,19 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.CompareTag("Bullet"))
         {
             Debug.Log("Collided with Bullet");
+            gameObject.layer = 10;
             isAlive = false; // Mark the enemy as dead
             Destroy(other.gameObject);
-            gameObject.layer = 10;
             enemyAnimator.SetTrigger("isDead");
             agent.isStopped = true;
             Destroy(gameObject, 2f);
         }
+    }
+
+    void SwitchWaypointOnCollision()
+    {
+        isCollidingWithEnemy = false; // Reset collision flag
+        GoToRandomWaypoint(); // Go to a new random waypoint
     }
 
     void ChasePlayer()

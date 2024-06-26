@@ -35,7 +35,7 @@ public class SceneTransition : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public IEnumerator StartScreenTransition()

@@ -12,10 +12,14 @@ public class PlayerController : MonoBehaviour
     public float rotateSpeed = 500f;
     public float rotateDuration = 3f;
     public int keyCount = 0;
+    public int currentScore;
+    public AudioSource playerAudio;
+    public AudioClip bombExplodeClip;
+    public AudioClip bombSpawnClip;
     private Vector3 moveDirection;
     public Animator playerAnimator;
     public GameObject bombPrefab;
-    public GameObject explosionParticle;
+    public GameObject explosionParticlePrefab;
     public GameObject bombBulletPrefab;
     public GameObject portal;
     public bool bombPlanted;
@@ -27,6 +31,7 @@ public class PlayerController : MonoBehaviour
     public NavMeshAgent playerNavMesh;
     public ParticleSystem[] dustTrail;
     public SceneTransition sceneTransitionScript;
+    public Coin coinScript;
 
     private void Awake()
     {
@@ -40,6 +45,7 @@ public class PlayerController : MonoBehaviour
         bombPlanted = false;
         keyObtained = false;
         keyCount = 0;
+        currentScore = 0;
     }
 
     // Update is called once per frame
@@ -47,9 +53,10 @@ public class PlayerController : MonoBehaviour
     {
         MovePlayer();
 
-        if (Input.GetKeyDown(KeyCode.Space) && !bombPlanted && !enteredPortal)
+        if (Input.GetKeyDown(KeyCode.Space) && !bombPlanted && !enteredPortal && !playerCameraScript.isMovingCamera && isGameActive)
         {
             StartCoroutine(PlantTheBomb());
+            playerAudio.PlayOneShot(bombSpawnClip, 1f);
         }
     }
 
@@ -66,6 +73,8 @@ public class PlayerController : MonoBehaviour
             // Check if there's any input (if moveDirection is not zero vector)
             if (moveDirection != Vector3.zero)
             {
+                moveDirection = moveDirection.normalized;
+
                 // Rotate player to face the movement direction (optional)
                 transform.rotation = Quaternion.LookRotation(moveDirection);
 
@@ -131,6 +140,13 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Collded with Enemy");
             StartCoroutine(ReactToEnemyCollide());
         }
+
+        if (other.gameObject.CompareTag("Coin"))
+        {
+            currentScore += coinScript.score;
+            Debug.Log("Current Score: " + currentScore);
+            Destroy(other.gameObject, 1f);
+        }
     }
     IEnumerator PlantTheBomb()
     {
@@ -146,9 +162,10 @@ public class PlayerController : MonoBehaviour
         InstantiateBombBullet(newPos, Vector3.left);
         InstantiateBombBullet(newPos, Vector3.right);
 
-        GameObject explossion = Instantiate(explosionParticle, newPos, Quaternion.identity);
+        GameObject explossion = Instantiate(explosionParticlePrefab, newPos, Quaternion.identity);
         Destroy(spawnedBomb);
         bombPlanted = false;
+        playerAudio.PlayOneShot(bombExplodeClip, 1f);
 
         yield return new WaitForSeconds(2f);
 
@@ -201,6 +218,17 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         sceneTransitionScript.transitionAnim.SetTrigger("end");
+    }
+
+    private void FixedUpdate()
+    {
+        // Clamp the y position of the player to not exceed 350
+        Vector3 position = playerRb.position;
+        if (position.y > 365f)
+        {
+            position.y = 365f;
+            playerRb.position = position;
+        }
     }
 
     private IEnumerator RotateOnPortalEnter()

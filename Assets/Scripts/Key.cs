@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Key : MonoBehaviour
 {
-    public float speed = 50f;
-    public float liftHeight = 2f; // Height to lift the key
-    public float liftDuration = 0.5f; // Time to lift the key
-    public float moveDuration = 0.5f; // Time to move towards the player
+    public float speed = 100f;
+    public float liftHeight = 5f; // Height to lift the key
+    public float liftDuration = 0.3f; // Time to lift the key
+    public float moveDuration = 0.3f; // Time to move towards the player
 
     private bool isMoving = false;
     private Transform playerTransform;
