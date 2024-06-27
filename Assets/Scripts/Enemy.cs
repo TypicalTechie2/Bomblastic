@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    public AudioSource enemyAudio;
+    public AudioClip enemyDeathClip;
     public Animator enemyAnimator;
     public Transform[] waypoints;
     public Transform player;
@@ -96,6 +98,7 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.CompareTag("Bullet"))
         {
             Debug.Log("Collided with Bullet");
+            enemyAudio.PlayOneShot(enemyDeathClip, 1f);
             gameObject.layer = 10;
             isAlive = false; // Mark the enemy as dead
             Destroy(other.gameObject);

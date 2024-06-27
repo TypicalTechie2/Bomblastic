@@ -39,7 +39,7 @@ public class PlayerCamera : MonoBehaviour
 
         Vector3 initialPosition = transform.position;
         float elapsedTime = 0f;
-        float moveDuration = 1.5f; // Adjust as needed
+        float moveDuration = 2f; // Adjust as needed
 
         while (elapsedTime < moveDuration)
         {

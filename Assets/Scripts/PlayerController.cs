@@ -16,6 +16,11 @@ public class PlayerController : MonoBehaviour
     public AudioSource playerAudio;
     public AudioClip bombExplodeClip;
     public AudioClip bombSpawnClip;
+    public AudioClip keyCollectClip;
+    public AudioClip coinCollectClip;
+    public AudioClip playerDeathClip;
+    public AudioClip portalOpenClip;
+    public AudioClip portalEntryClip;
     private Vector3 moveDirection;
     public Animator playerAnimator;
     public GameObject bombPrefab;
@@ -56,7 +61,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && !bombPlanted && !enteredPortal && !playerCameraScript.isMovingCamera && isGameActive)
         {
             StartCoroutine(PlantTheBomb());
-            playerAudio.PlayOneShot(bombSpawnClip, 1f);
+            playerAudio.PlayOneShot(bombSpawnClip, 0.5f);
         }
     }
 
@@ -73,6 +78,7 @@ public class PlayerController : MonoBehaviour
             // Check if there's any input (if moveDirection is not zero vector)
             if (moveDirection != Vector3.zero)
             {
+
                 moveDirection = moveDirection.normalized;
 
                 // Rotate player to face the movement direction (optional)
@@ -119,14 +125,17 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Portal"))
         {
             enteredPortal = true;
+            playerAudio.PlayOneShot(portalEntryClip, 1f);
             Debug.Log("Entered Portal");
             StartCoroutine(RotateOnPortalEnter());
             StartCoroutine(sceneTransitionScript.EndScreenTransition());
+            playerCameraScript.MoveCameraToPosition(transform.position + new Vector3(0, 5, 0));
         }
 
         if (other.gameObject.CompareTag("Key"))
         {
             keyObtained = true;
+            playerAudio.PlayOneShot(keyCollectClip, 1f);
             Destroy(other.gameObject, 1f);
             keyCount += 1;
             Debug.Log("Key Obtained: " + keyCount);
@@ -136,6 +145,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             isGameActive = false;
+            playerAudio.PlayOneShot(playerDeathClip, 1f);
             playerNavMesh.enabled = false;
             Debug.Log("Collded with Enemy");
             StartCoroutine(ReactToEnemyCollide());
@@ -143,6 +153,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Coin"))
         {
+            playerAudio.PlayOneShot(coinCollectClip, 1f);
             currentScore += coinScript.score;
             Debug.Log("Current Score: " + currentScore);
             Destroy(other.gameObject, 1f);
@@ -186,6 +197,7 @@ public class PlayerController : MonoBehaviour
     {
         if (keyCount == 3)
         {
+            playerAudio.PlayOneShot(portalOpenClip, 1f);
             // Trigger camera movement
             if (playerCameraScript != null)
             {
@@ -193,6 +205,7 @@ public class PlayerController : MonoBehaviour
             }
 
             yield return new WaitForSeconds(2f);
+
             portal.SetActive(true);
         }
     }

@@ -3318,7 +3318,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.33333334
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: e49cc4b68973a6f4e82888362c4c13fe, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 4860524aa296f3944b5821c544d624bc, type: 2}
   m_BuildHeightMesh: 0
 --- !u!114 &803708946
 MonoBehaviour:
@@ -3349,7 +3349,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.5
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 0e6dc57b4f1a0e547a903bc83b831227, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 3eea608116a39b54bba14f1e00f44461, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &803708947
 Transform:
@@ -9820,6 +9820,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66671c7e6727814b8a380fe8a2731b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyAudio: {fileID: 0}
+  enemyDeathClip: {fileID: 0}
   enemyAnimator: {fileID: 1133975346}
   waypoints:
   - {fileID: 397943774}
@@ -10643,6 +10645,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66671c7e6727814b8a380fe8a2731b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyAudio: {fileID: 0}
+  enemyDeathClip: {fileID: 0}
   enemyAnimator: {fileID: 1251280137}
   waypoints:
   - {fileID: 397943774}
@@ -17730,11 +17734,19 @@ MonoBehaviour:
   rotateSpeed: 750
   rotateDuration: 10
   keyCount: 0
+  currentScore: 0
+  playerAudio: {fileID: 0}
+  bombExplodeClip: {fileID: 0}
+  bombSpawnClip: {fileID: 0}
+  keyCollectClip: {fileID: 0}
+  coinCollectClip: {fileID: 0}
+  playerDeathClip: {fileID: 0}
+  portalOpenClip: {fileID: 0}
+  portalEntryClip: {fileID: 0}
   playerAnimator: {fileID: 1667888566}
   bombPrefab: {fileID: 62751121917382795, guid: 2d070b5cd19cda2419a4b9a722b6f73d,
     type: 3}
-  explosionParticle: {fileID: 1367692873789484436, guid: 8e4d5b1361813024493ff3a200d2f70a,
-    type: 3}
+  explosionParticlePrefab: {fileID: 0}
   bombBulletPrefab: {fileID: 2166381123831316706, guid: 6d898ceb2e02e7046a2c684114660e15,
     type: 3}
   portal: {fileID: 1003380329}
@@ -17749,6 +17761,7 @@ MonoBehaviour:
   - {fileID: 1833134212}
   - {fileID: 1127690950}
   sceneTransitionScript: {fileID: 1072297782}
+  coinScript: {fileID: 0}
 --- !u!95 &1667888566
 Animator:
   serializedVersion: 5
