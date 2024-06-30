@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
     public NavMeshAgent playerNavMesh;
     public ParticleSystem[] dustTrail;
     public SceneTransition sceneTransitionScript;
-    public Coin coinScript;
+    public Star starScript;
     public TMP_Text scoreText;
     public GameManager gameManagerScript;
 
@@ -155,10 +155,10 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(ReactToEnemyCollide());
         }
 
-        if (other.gameObject.CompareTag("Coin"))
+        if (other.gameObject.CompareTag("Star"))
         {
             playerAudio.PlayOneShot(coinCollectClip, 1f);
-            currentScore += coinScript.score;
+            currentScore += starScript.score;
             scoreText.text = "Score: " + currentScore.ToString();
             Debug.Log("Current Score: " + currentScore);
             Destroy(other.gameObject, 1f);

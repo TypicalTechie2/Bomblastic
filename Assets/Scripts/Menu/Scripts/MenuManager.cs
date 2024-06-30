@@ -16,9 +16,7 @@ public class MenuManager : MonoBehaviour
     public Button menuButton;
     public Button exitButton;
     public Button[] buttons;
-    public GameObject testObj;
     private static bool isFirstLoad = true;
-    public bool hasClickedOnStart = false;
 
     private void Awake()
     {
@@ -66,10 +64,7 @@ public class MenuManager : MonoBehaviour
 
     public void StartGame()
     {
-        hasClickedOnStart = true;
         audioManagerScript.PlayButtonAudio();
-
-
         characterA.SetActive(false);
         characterB.SetActive(false);
         backgroundImage.gameObject.SetActive(false);

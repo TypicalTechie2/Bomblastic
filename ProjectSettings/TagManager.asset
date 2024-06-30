@@ -12,8 +12,8 @@ TagManager:
   - Enemy
   - Key
   - Bullet
-  - Coin
   - Bomb
+  - Star
   layers:
   - Default
   - TransparentFX
@@ -27,7 +27,7 @@ TagManager:
   - Player
   - Completed
   - Portal
-  - Coin
+  - Star
   - Bomb
   - 
   - 

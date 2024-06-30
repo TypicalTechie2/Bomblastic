@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
-        audioManagerScript.PauseMusic();
+        audioManagerScript.ButtonOnClickAudio();
         Time.timeScale = 0.0f;
         pauseButton.gameObject.SetActive(false);
         inGameMenuImage.gameObject.SetActive(true);
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
 
     public void ResumeGame()
     {
-        audioManagerScript.CloseButtonAudio();
+        audioManagerScript.ButtonOnClickAudio();
         audioManagerScript.ResumeMusic();
         Time.timeScale = 1.0f;
         inGameMenuImage.gameObject.SetActive(false);
@@ -49,13 +49,14 @@ public class GameManager : MonoBehaviour
 
     public void ReturnToMenu()
     {
-        audioManagerScript.CloseButtonAudio();
+        audioManagerScript.ButtonOnClickAudio();
         SceneManager.LoadScene(0);
         Time.timeScale = 1.0f;
     }
 
     public void RestartGame()
     {
+        audioManagerScript.PlayButtonAudio();
         playerControllerScript.currentScore = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
