@@ -101,7 +101,7 @@ public class Enemy : MonoBehaviour
             enemyAudio.PlayOneShot(enemyDeathClip, 1f);
             gameObject.layer = 10;
             isAlive = false; // Mark the enemy as dead
-            Destroy(other.gameObject);
+            Destroy(other.gameObject, 0.03f);
             enemyAnimator.SetTrigger("isDead");
             agent.isStopped = true;
             Destroy(gameObject, 2f);

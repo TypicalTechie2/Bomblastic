@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
     public float bombBulletSpeed = 10f;
+    public float bombFlyForce = 25f;
     private float horizontalInput;
     private float verticalInput;
     public float moveSpeed = 10f;
@@ -14,7 +16,6 @@ public class PlayerController : MonoBehaviour
     public int keyCount = 0;
     public int currentScore;
     public AudioSource playerAudio;
-    public AudioClip bombExplodeClip;
     public AudioClip bombSpawnClip;
     public AudioClip keyCollectClip;
     public AudioClip coinCollectClip;
@@ -37,6 +38,8 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem[] dustTrail;
     public SceneTransition sceneTransitionScript;
     public Coin coinScript;
+    public TMP_Text scoreText;
+    public GameManager gameManagerScript;
 
     private void Awake()
     {
@@ -51,6 +54,7 @@ public class PlayerController : MonoBehaviour
         keyObtained = false;
         keyCount = 0;
         currentScore = 0;
+        scoreText.text = "Score: " + currentScore.ToString();
     }
 
     // Update is called once per frame
@@ -60,7 +64,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && !bombPlanted && !enteredPortal && !playerCameraScript.isMovingCamera && isGameActive)
         {
-            StartCoroutine(PlantTheBomb());
+            PlantTheBomb();
             playerAudio.PlayOneShot(bombSpawnClip, 0.5f);
         }
     }
@@ -155,42 +159,19 @@ public class PlayerController : MonoBehaviour
         {
             playerAudio.PlayOneShot(coinCollectClip, 1f);
             currentScore += coinScript.score;
+            scoreText.text = "Score: " + currentScore.ToString();
             Debug.Log("Current Score: " + currentScore);
             Destroy(other.gameObject, 1f);
         }
     }
-    IEnumerator PlantTheBomb()
+    private void PlantTheBomb()
     {
         bombPlanted = true;
         GameObject spawnedBomb = Instantiate(bombPrefab, transform.position, transform.rotation);
 
-        yield return new WaitForSeconds(1.5f);
+        Rigidbody spawnedBombRb = spawnedBomb.GetComponent<Rigidbody>();
 
-        Vector3 newPos = new Vector3(spawnedBomb.transform.position.x, 1, spawnedBomb.transform.position.z);
-
-        InstantiateBombBullet(newPos, Vector3.back);
-        InstantiateBombBullet(newPos, Vector3.forward);
-        InstantiateBombBullet(newPos, Vector3.left);
-        InstantiateBombBullet(newPos, Vector3.right);
-
-        GameObject explossion = Instantiate(explosionParticlePrefab, newPos, Quaternion.identity);
-        Destroy(spawnedBomb);
-        bombPlanted = false;
-        playerAudio.PlayOneShot(bombExplodeClip, 1f);
-
-        yield return new WaitForSeconds(2f);
-
-        Destroy(explossion);
-    }
-
-    void InstantiateBombBullet(Vector3 position, Vector3 direction)
-    {
-        GameObject bombBullet = Instantiate(bombBulletPrefab, position, Quaternion.identity);
-
-        Rigidbody bulletRb = bombBullet.GetComponent<Rigidbody>();
-        bulletRb.velocity = direction * bombBulletSpeed;
-
-        Destroy(bombBullet, 0.5f);
+        spawnedBombRb.AddForce(Vector3.up * bombFlyForce, ForceMode.Impulse);
     }
 
     private IEnumerator ActivatePortal()
@@ -231,6 +212,10 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         sceneTransitionScript.transitionAnim.SetTrigger("end");
+
+        yield return new WaitForSeconds(1.75f);
+
+        gameManagerScript.RestartMenu();
     }
 
     private void FixedUpdate()

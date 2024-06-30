@@ -32,6 +32,11 @@ public class BombBullet : MonoBehaviour
             // Update the NavMesh to make the area walkable
             StartCoroutine(UpdateNavMesh());
         }
+
+        if (other.gameObject.CompareTag("Block"))
+        {
+            Destroy(gameObject);
+        }
     }
 
     IEnumerator UpdateNavMesh()

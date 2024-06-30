@@ -7,9 +7,11 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
     private const string VolumePrefKey = "volumePref";
-
     public AudioSource audioSource;
     public Slider volumeSlider;
+    public AudioClip playButtonClip;
+    public AudioClip buttonClickClip;
+    public AudioClip closeButtonClip;
 
     private void Awake()
     {
@@ -67,5 +69,30 @@ public class AudioManager : MonoBehaviour
         {
             audioSource.volume = volumeSlider.value;
         }
+    }
+
+    public void PauseMusic()
+    {
+        audioSource.Pause();
+    }
+
+    public void ResumeMusic()
+    {
+        audioSource.UnPause();
+    }
+
+    public void PlayButtonAudio()
+    {
+        audioSource.PlayOneShot(playButtonClip, 1f);
+    }
+
+    public void ButtonOnClickAudio()
+    {
+        audioSource.PlayOneShot(buttonClickClip, 1f);
+    }
+
+    public void CloseButtonAudio()
+    {
+        audioSource.PlayOneShot(closeButtonClip, 1f);
     }
 }
