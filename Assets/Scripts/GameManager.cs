@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public bool hasGameBegun;
     private AudioManager audioManagerScript;
     public Image restartMenuImage;
+    public GameObject keyImages;
     public PlayerController playerControllerScript;
 
     private void Awake()
@@ -63,10 +64,18 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator PauseButtonShowDelay()
     {
+        keyImages.SetActive(false);
+        playerControllerScript.bombButton.gameObject.SetActive(false);
+        playerControllerScript.joystick.gameObject.SetActive(false);
+        playerControllerScript.scoreText.gameObject.SetActive(false);
         pauseButton.gameObject.SetActive(false);
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.5f);
 
+        keyImages.SetActive(true);
+        playerControllerScript.bombButton.gameObject.SetActive(true);
+        playerControllerScript.joystick.gameObject.SetActive(true);
+        playerControllerScript.scoreText.gameObject.SetActive(true);
         pauseButton.gameObject.SetActive(true);
     }
 

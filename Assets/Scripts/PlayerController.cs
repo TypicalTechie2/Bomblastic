@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -40,6 +41,9 @@ public class PlayerController : MonoBehaviour
     public Star starScript;
     public TMP_Text scoreText;
     public GameManager gameManagerScript;
+    public Joystick joystick;
+    public Button bombButton;
+    public Image[] keysActivationImage;
 
     private void Awake()
     {
@@ -53,8 +57,8 @@ public class PlayerController : MonoBehaviour
         bombPlanted = false;
         keyObtained = false;
         keyCount = 0;
-        currentScore = 0;
-        scoreText.text = "Score: " + currentScore.ToString();
+
+        scoreText.text = "Score: " + ScoreManager.instance.currentScore.ToString();
     }
 
     // Update is called once per frame
@@ -73,8 +77,8 @@ public class PlayerController : MonoBehaviour
     {
         if (!playerCameraScript.isMovingCamera && isGameActive && !enteredPortal)
         {
-            horizontalInput = Input.GetAxis("Horizontal");
-            verticalInput = Input.GetAxis("Vertical");
+            horizontalInput = joystick.Horizontal;
+            verticalInput = joystick.Vertical;
 
             // Determine the movement direction
             moveDirection = new Vector3(horizontalInput, 0, verticalInput).normalized;
@@ -124,6 +128,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Method to handle button click
+    public void OnBombButtonClicked()
+    {
+        if (!bombPlanted && !enteredPortal && !playerCameraScript.isMovingCamera && isGameActive)
+        {
+            PlantTheBomb();
+            playerAudio.PlayOneShot(bombSpawnClip, 0.5f);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Portal"))
@@ -143,6 +157,11 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject, 1f);
             keyCount += 1;
             Debug.Log("Key Obtained: " + keyCount);
+
+            if (keyCount <= keysActivationImage.Length)
+            {
+                keysActivationImage[keyCount - 1].gameObject.SetActive(true);
+            }
             StartCoroutine(ActivatePortal());
         }
 
@@ -158,9 +177,9 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Star"))
         {
             playerAudio.PlayOneShot(coinCollectClip, 1f);
-            currentScore += starScript.score;
-            scoreText.text = "Score: " + currentScore.ToString();
-            Debug.Log("Current Score: " + currentScore);
+            ScoreManager.instance.currentScore += starScript.score;
+            scoreText.text = "Score: " + ScoreManager.instance.currentScore.ToString();
+            Debug.Log("Current Score: " + ScoreManager.instance.currentScore);
             Destroy(other.gameObject, 1f);
         }
     }

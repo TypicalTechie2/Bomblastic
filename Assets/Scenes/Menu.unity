@@ -512,8 +512,6 @@ MonoBehaviour:
   - {fileID: 293671659}
   - {fileID: 2130459293}
   - {fileID: 2000414447}
-  testObj: {fileID: 0}
-  hasClickedOnStart: 0
 --- !u!4 &144503657
 Transform:
   m_ObjectHideFlags: 0
@@ -732,11 +730,11 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: -1716993091, guid: 36b362a4fe94c284bbff8aecd119b1b5,
+    m_HighlightedSprite: {fileID: -2035157359, guid: 36b362a4fe94c284bbff8aecd119b1b5,
       type: 3}
     m_PressedSprite: {fileID: -2035157359, guid: 36b362a4fe94c284bbff8aecd119b1b5,
       type: 3}
-    m_SelectedSprite: {fileID: -2035157359, guid: 36b362a4fe94c284bbff8aecd119b1b5,
+    m_SelectedSprite: {fileID: -1716993091, guid: 36b362a4fe94c284bbff8aecd119b1b5,
       type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
