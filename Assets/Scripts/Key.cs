@@ -47,8 +47,10 @@ public class Key : MonoBehaviour
         // Smoothly move the key up
         yield return StartCoroutine(SmoothMove(startPosition, liftPosition, liftDuration));
 
+        Vector3 newPos = new Vector3(0, 1.5f, 0);
+
         // Smoothly move the key towards the player
-        yield return StartCoroutine(SmoothMove(liftPosition, playerTransform.position, moveDuration));
+        yield return StartCoroutine(SmoothMove(liftPosition, playerTransform.position + newPos, moveDuration));
 
         // Optionally, you can add logic here for what happens when the key reaches the player
         Destroy(gameObject); // For example, destroy the key

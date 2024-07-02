@@ -8,15 +8,17 @@ public class GameManager : MonoBehaviour
 {
     public Button pauseButton;
     public Image inGameMenuImage;
+    public Image BombButtonBackgroundImage;
     public bool hasGameBegun;
     private AudioManager audioManagerScript;
     public Image restartMenuImage;
     public GameObject keyImages;
     public PlayerController playerControllerScript;
+    public ScoreManager scoreManagerScript;
 
     private void Awake()
     {
-        audioManagerScript = FindObjectOfType<AudioManager>();
+        audioManagerScript = AudioManager.instance;
     }
 
     // Start is called before the first frame update
@@ -57,6 +59,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        scoreManagerScript.ResetScore();
         audioManagerScript.PlayButtonAudio();
         playerControllerScript.currentScore = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -65,18 +68,18 @@ public class GameManager : MonoBehaviour
     private IEnumerator PauseButtonShowDelay()
     {
         keyImages.SetActive(false);
-        playerControllerScript.bombButton.gameObject.SetActive(false);
         playerControllerScript.joystick.gameObject.SetActive(false);
         playerControllerScript.scoreText.gameObject.SetActive(false);
         pauseButton.gameObject.SetActive(false);
+        BombButtonBackgroundImage.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(1.5f);
 
         keyImages.SetActive(true);
-        playerControllerScript.bombButton.gameObject.SetActive(true);
         playerControllerScript.joystick.gameObject.SetActive(true);
         playerControllerScript.scoreText.gameObject.SetActive(true);
         pauseButton.gameObject.SetActive(true);
+        BombButtonBackgroundImage.gameObject.SetActive(true);
     }
 
     public void RestartMenu()

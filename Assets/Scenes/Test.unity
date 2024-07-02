@@ -3051,10 +3051,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseButton: {fileID: 1563565696}
   inGameMenuImage: {fileID: 97136002}
+  BombButtonBackgroundImage: {fileID: 0}
   hasGameBegun: 0
   restartMenuImage: {fileID: 431488487}
   keyImages: {fileID: 250735642}
   playerControllerScript: {fileID: 626884758}
+  scoreManagerScript: {fileID: 0}
 --- !u!114 &451055476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9309,6 +9311,7 @@ MonoBehaviour:
   keyCount: 0
   currentScore: 0
   playerAudio: {fileID: 626884756}
+  playerHitClip: {fileID: 0}
   bombSpawnClip: {fileID: 8300000, guid: 420601b6e3897354992a8db94b37893a, type: 3}
   keyCollectClip: {fileID: 8300000, guid: 06c969825b1a6cd40ba26a1733bb7ad8, type: 3}
   coinCollectClip: {fileID: 8300000, guid: 546b16ea3cbab7d49a919dcf86c4db20, type: 3}
@@ -15242,7 +15245,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fc2fc33016066c548b8ee6ae2dfebb38, type: 2}
+  - {fileID: 2100000, guid: 8d6bf2da5a7fe4645b69a3a488b42d3e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public int keyCount = 0;
     public int currentScore;
     public AudioSource playerAudio;
+    public AudioClip playerHitClip;
     public AudioClip bombSpawnClip;
     public AudioClip keyCollectClip;
     public AudioClip coinCollectClip;
@@ -77,8 +78,17 @@ public class PlayerController : MonoBehaviour
     {
         if (!playerCameraScript.isMovingCamera && isGameActive && !enteredPortal)
         {
-            horizontalInput = joystick.Horizontal;
-            verticalInput = joystick.Vertical;
+            // Get joystick input
+            float joystickHorizontal = joystick.Horizontal;
+            float joystickVertical = joystick.Vertical;
+
+            // Get keyboard input
+            float keyboardHorizontal = Input.GetAxis("Horizontal"); // A/D or Left/Right arrow keys
+            float keyboardVertical = Input.GetAxis("Vertical"); // W/S or Up/Down arrow keys
+
+            // Combine inputs
+            horizontalInput = joystickHorizontal + keyboardHorizontal;
+            verticalInput = joystickVertical + keyboardVertical;
 
             // Determine the movement direction
             moveDirection = new Vector3(horizontalInput, 0, verticalInput).normalized;
@@ -168,9 +178,11 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             isGameActive = false;
-            playerAudio.PlayOneShot(playerDeathClip, 1f);
+            playerAudio.PlayOneShot(playerHitClip, 1f);
+            playerAudio.PlayOneShot(playerDeathClip, 0.3f);
             playerNavMesh.enabled = false;
             Debug.Log("Collded with Enemy");
+
             StartCoroutine(ReactToEnemyCollide());
         }
 
@@ -183,6 +195,7 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject, 1f);
         }
     }
+
     private void PlantTheBomb()
     {
         bombPlanted = true;
