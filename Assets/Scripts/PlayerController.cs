@@ -90,6 +90,11 @@ public class PlayerController : MonoBehaviour
             horizontalInput = joystickHorizontal + keyboardHorizontal;
             verticalInput = joystickVertical + keyboardVertical;
 
+            // Apply dead zone to joystick input
+            float deadZone = 0.1f; // Adjust this value as needed
+            if (Mathf.Abs(horizontalInput) < deadZone) horizontalInput = 0f;
+            if (Mathf.Abs(verticalInput) < deadZone) verticalInput = 0f;
+
             // Determine the movement direction
             moveDirection = new Vector3(horizontalInput, 0, verticalInput).normalized;
 

@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public GameObject keyImages;
     public PlayerController playerControllerScript;
     public ScoreManager scoreManagerScript;
+    public Joystick playerJoystick;
+    public Image bombButtonImage;
 
     private void Awake()
     {
@@ -35,6 +37,8 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
+        playerJoystick.gameObject.SetActive(false);
+        bombButtonImage.gameObject.SetActive(false);
         audioManagerScript.ButtonOnClickAudio();
         Time.timeScale = 0.0f;
         pauseButton.gameObject.SetActive(false);
@@ -43,6 +47,8 @@ public class GameManager : MonoBehaviour
 
     public void ResumeGame()
     {
+        playerJoystick.gameObject.SetActive(true);
+        bombButtonImage.gameObject.SetActive(true);
         audioManagerScript.ButtonOnClickAudio();
         audioManagerScript.ResumeMusic();
         Time.timeScale = 1.0f;
@@ -52,9 +58,11 @@ public class GameManager : MonoBehaviour
 
     public void ReturnToMenu()
     {
+        scoreManagerScript.ResetScore();
         audioManagerScript.ButtonOnClickAudio();
         SceneManager.LoadScene(0);
         Time.timeScale = 1.0f;
+
     }
 
     public void RestartGame()

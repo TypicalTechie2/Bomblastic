@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public Animator enemyAnimator;
     public Transform[] waypoints;
     public Transform player;
+    public GameObject enemyExplosionParticle;
     public float patrolSpeed = 2.0f;
     private NavMeshAgent agent;
     private Rigidbody enemyRb;
@@ -98,14 +99,26 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.CompareTag("Bullet"))
         {
             Debug.Log("Collided with Bullet");
+            StartCoroutine(ActivateEnemyExplosionParticle());
             enemyAudio.PlayOneShot(enemyDeathClip, 1f);
             gameObject.layer = 10;
             isAlive = false; // Mark the enemy as dead
             Destroy(other.gameObject, 0.03f);
             enemyAnimator.SetTrigger("isDead");
             agent.isStopped = true;
-            Destroy(gameObject, 2f);
+            Destroy(gameObject, 0.5f);
         }
+    }
+
+    IEnumerator ActivateEnemyExplosionParticle()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Vector3 newPos = transform.position;
+
+        newPos.y += 2;
+
+        GameObject explosion = Instantiate(enemyExplosionParticle, newPos, Quaternion.identity);
+        Destroy(explosion, 1.25f);
     }
 
     void SwitchWaypointOnCollision()

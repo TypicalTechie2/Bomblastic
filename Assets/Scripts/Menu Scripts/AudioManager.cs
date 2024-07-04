@@ -67,7 +67,8 @@ public class AudioManager : MonoBehaviour
 
         else
         {
-            audioSource.volume = volumeSlider.value;
+            audioSource.volume = 1.0f; // Set to full volume by default
+            volumeSlider.value = 1.0f; // Set slider to full volume by default
         }
     }
 
