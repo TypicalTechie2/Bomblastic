@@ -157,12 +157,10 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Portal"))
         {
-            enteredPortal = true;
-            playerAudio.PlayOneShot(portalEntryClip, 1f);
             Debug.Log("Entered Portal");
             StartCoroutine(RotateOnPortalEnter());
             StartCoroutine(sceneTransitionScript.EndScreenTransition());
-            playerCameraScript.MoveCameraToPosition(transform.position + new Vector3(0, 5, 0));
+            playerCameraScript.MoveCameraToPosition(transform.position + new Vector3(0, 5, -0.5f));
         }
 
         if (other.gameObject.CompareTag("Key"))
@@ -250,9 +248,9 @@ public class PlayerController : MonoBehaviour
 
         sceneTransitionScript.transitionAnim.SetTrigger("end");
 
-        yield return new WaitForSeconds(1.75f);
+        yield return new WaitForSeconds(1f);
 
-        gameManagerScript.RestartMenu();
+        gameManagerScript.ShowRestartMenu();
     }
 
     private void FixedUpdate()
@@ -268,22 +266,28 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator RotateOnPortalEnter()
     {
+        // Play portal entry sound only once
+        if (!enteredPortal)
+        {
+            enteredPortal = true; // Ensure this flag is set correctly
+            playerAudio.PlayOneShot(portalEntryClip, 1f);
+        }
+
         float jumpDistance = 5f;
         Vector3 originalPosition = transform.position;
         Vector3 newPosition = originalPosition + transform.forward * jumpDistance;
 
-        float elapsedTime = 2f;
+        float elapsedTime = 0f;
 
-        while (enteredPortal)
+        while (elapsedTime < 3f) // Adjust timing as needed
         {
             // Linearly interpolate position to create a smooth jump effect
-            transform.position = Vector3.Lerp(originalPosition, newPosition, elapsedTime / 5f);
+            transform.position = Vector3.Lerp(originalPosition, newPosition, elapsedTime / 3f);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
         // Ensure the player is exactly at the new position at the end
         transform.position = newPosition;
-
     }
 }

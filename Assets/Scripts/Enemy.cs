@@ -115,7 +115,7 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         Vector3 newPos = transform.position;
 
-        newPos.y += 2;
+        newPos.y += 1.5f;
 
         GameObject explosion = Instantiate(enemyExplosionParticle, newPos, Quaternion.identity);
         Destroy(explosion, 1.25f);

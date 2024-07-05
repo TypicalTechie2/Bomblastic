@@ -6,7 +6,10 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
-    private AudioManager audioManagerScript;
+    public AudioSource menuAudio;
+    public AudioClip playButtonClip;
+    public AudioClip exitButtonClip;
+    public AudioClip ControlsButtonClip;
     public GameObject characterA;
     public GameObject characterB;
     public Image titleImage;
@@ -20,7 +23,7 @@ public class MenuManager : MonoBehaviour
 
     private void Awake()
     {
-        audioManagerScript = FindObjectOfType<AudioManager>();
+
     }
 
     // Start is called before the first frame update
@@ -29,13 +32,7 @@ public class MenuManager : MonoBehaviour
         if (isFirstLoad)
         {
             StartCoroutine(DisableButtonsForSeconds());
-            isFirstLoad = false;
         }
-        else
-        {
-            isFirstLoad = true;
-        }
-
     }
 
     // Update is called once per frame
@@ -46,6 +43,8 @@ public class MenuManager : MonoBehaviour
 
     IEnumerator DisableButtonsForSeconds()
     {
+        isFirstLoad = false;
+
         // Disable all buttons
         foreach (Button button in buttons)
         {
@@ -64,7 +63,15 @@ public class MenuManager : MonoBehaviour
 
     public void StartGame()
     {
-        audioManagerScript.PlayButtonAudio();
+        StartCoroutine(startButtonDelay());
+    }
+
+    private IEnumerator startButtonDelay()
+    {
+        menuAudio.PlayOneShot(playButtonClip, 1f);
+
+        yield return new WaitForSeconds(0.75f);
+
         characterA.SetActive(false);
         characterB.SetActive(false);
         backgroundImage.gameObject.SetActive(false);
@@ -73,7 +80,7 @@ public class MenuManager : MonoBehaviour
 
     public void EnterMenuScreen()
     {
-        audioManagerScript.ButtonOnClickAudio();
+        menuAudio.PlayOneShot(ControlsButtonClip, 1f);
         titleImage.gameObject.SetActive(false);
         playButton.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(false);
@@ -83,7 +90,7 @@ public class MenuManager : MonoBehaviour
 
     public void ExitMenuScreen()
     {
-        audioManagerScript.CloseButtonAudio();
+        menuAudio.PlayOneShot(ControlsButtonClip, 1f);
         menuScreen.SetActive(false);
         titleImage.gameObject.SetActive(true);
         playButton.gameObject.SetActive(true);
@@ -93,6 +100,15 @@ public class MenuManager : MonoBehaviour
 
     public void ExitGame()
     {
+        StartCoroutine(ExitGameDelay());
+    }
+
+    public IEnumerator ExitGameDelay()
+    {
+        menuAudio.PlayOneShot(exitButtonClip, 1f);
+
+        yield return new WaitForSeconds(0.75f);
+
 #if UNITY_EDITOR
 
         UnityEditor.EditorApplication.isPlaying = false;

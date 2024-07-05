@@ -14,6 +14,8 @@ TagManager:
   - Bullet
   - Bomb
   - Star
+  - Slider
+  - BackgroundMusic
   layers:
   - Default
   - TransparentFX

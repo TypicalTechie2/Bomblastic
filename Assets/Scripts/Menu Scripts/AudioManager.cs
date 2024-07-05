@@ -9,27 +9,11 @@ public class AudioManager : MonoBehaviour
     private const string VolumePrefKey = "volumePref";
     public AudioSource audioSource;
     public Slider volumeSlider;
-    public AudioClip playButtonClip;
     public AudioClip buttonClickClip;
-    public AudioClip closeButtonClip;
+    public AudioClip restartButtonClip;
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-
-            DontDestroyOnLoad(instance);
-        }
-
-        else
-        {
-            if (instance != this)
-            {
-                Destroy(gameObject);
-            }
-        }
-
         LoadVolume();
         volumeSlider.onValueChanged.AddListener(SetVolume);
     }
@@ -82,18 +66,13 @@ public class AudioManager : MonoBehaviour
         audioSource.UnPause();
     }
 
-    public void PlayButtonAudio()
+    public void RestartButtonClip()
     {
-        audioSource.PlayOneShot(playButtonClip, 1f);
+        audioSource.PlayOneShot(restartButtonClip, 1f);
     }
 
     public void ButtonOnClickAudio()
     {
         audioSource.PlayOneShot(buttonClickClip, 1f);
-    }
-
-    public void CloseButtonAudio()
-    {
-        audioSource.PlayOneShot(closeButtonClip, 1f);
     }
 }
