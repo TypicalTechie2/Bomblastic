@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.40410715, g: 0.4415095, b: 0, a: 1}
   m_AmbientEquatorColor: {r: 0.4415095, g: 0.23611237, b: 0, a: 1}
   m_AmbientGroundColor: {r: 0.22815616, g: 0.3509434, b: 0, a: 1}
-  m_AmbientIntensity: 2.5
+  m_AmbientIntensity: 3
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 528363c5c1cf6a7458140c6851c77b68, type: 2}
@@ -1460,8 +1460,8 @@ MonoBehaviour:
   amplitude: 0.5
   frequency: 3
   rotationSpeed: 100
-  liftHeight: 2
-  liftDuration: 0.5
+  liftHeight: 5
+  liftDuration: 0.3
   moveDuration: 0.3
 --- !u!65 &161007576
 BoxCollider:
@@ -3569,7 +3569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 385671507}
-  playerOffset: {x: 0, y: 25, z: -15}
+  playerOffset: {x: 0, y: 22, z: -17}
   isMovingCamera: 0
 --- !u!114 &330585549
 MonoBehaviour:
@@ -9606,7 +9606,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.78867924, g: 0.78867924, b: 0.78867924, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -10048,7 +10048,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 50
+    angle: 30
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -10134,7 +10134,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.1
+      value: 0.0001
       mode: 0
       spread: 0
       speed:
@@ -14436,7 +14436,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.78867924, g: 0.78867924, b: 0.78867924, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -14878,7 +14878,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 50
+    angle: 30
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -20528,8 +20528,8 @@ MonoBehaviour:
   amplitude: 0.5
   frequency: 3
   rotationSpeed: 100
-  liftHeight: 2
-  liftDuration: 0.5
+  liftHeight: 5
+  liftDuration: 0.3
   moveDuration: 0.3
 --- !u!65 &1223078147
 BoxCollider:
@@ -20925,8 +20925,8 @@ MonoBehaviour:
   amplitude: 0.5
   frequency: 3
   rotationSpeed: 100
-  liftHeight: 2
-  liftDuration: 0.5
+  liftHeight: 5
+  liftDuration: 0.3
   moveDuration: 0.3
 --- !u!65 &1279656281
 BoxCollider:
@@ -23819,8 +23819,8 @@ MonoBehaviour:
   amplitude: 0.5
   frequency: 3
   rotationSpeed: 100
-  liftHeight: 2
-  liftDuration: 0.5
+  liftHeight: 5
+  liftDuration: 0.3
   moveDuration: 0.3
 --- !u!65 &1662255424
 BoxCollider:
@@ -26074,8 +26074,8 @@ MonoBehaviour:
   amplitude: 0.5
   frequency: 3
   rotationSpeed: 100
-  liftHeight: 2
-  liftDuration: 0.5
+  liftHeight: 5
+  liftDuration: 0.3
   moveDuration: 0.3
 --- !u!65 &1916684766
 BoxCollider:

@@ -72,6 +72,16 @@ public class PlayerController : MonoBehaviour
             PlantTheBomb();
             playerAudio.PlayOneShot(bombSpawnClip, 0.5f);
         }
+
+        if (playerCameraScript.isMovingCamera)
+        {
+            gameObject.layer = 10;
+        }
+
+        else if (!playerCameraScript.isMovingCamera)
+        {
+            gameObject.layer = 9;
+        }
     }
 
     private void MovePlayer()
@@ -96,7 +106,13 @@ public class PlayerController : MonoBehaviour
             if (Mathf.Abs(verticalInput) < deadZone) verticalInput = 0f;
 
             // Determine the movement direction
-            moveDirection = new Vector3(horizontalInput, 0, verticalInput).normalized;
+            moveDirection = new Vector3(horizontalInput, 0, verticalInput);
+
+            // Normalize moveDirection only if there's any input (non-zero vector)
+            if (moveDirection.magnitude > 1f)
+            {
+                moveDirection.Normalize();
+            }
 
             // Check if there's any input (if moveDirection is not zero vector)
             if (moveDirection != Vector3.zero)
@@ -196,6 +212,20 @@ public class PlayerController : MonoBehaviour
             scoreText.text = "Score: " + ScoreManager.instance.currentScore.ToString();
             Debug.Log("Current Score: " + ScoreManager.instance.currentScore);
             Destroy(other.gameObject, 1f);
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("SpikeBall") && !playerCameraScript.isMovingCamera)
+        {
+            isGameActive = false;
+            playerAudio.PlayOneShot(playerHitClip, 1f);
+            playerAudio.PlayOneShot(playerDeathClip, 0.3f);
+            playerNavMesh.enabled = false;
+            Debug.Log("Collded with Enemy");
+
+            StartCoroutine(ReactToEnemyCollide());
         }
     }
 

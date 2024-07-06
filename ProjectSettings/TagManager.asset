@@ -16,6 +16,7 @@ TagManager:
   - Star
   - Slider
   - BackgroundMusic
+  - SpikeBall
   layers:
   - Default
   - TransparentFX
@@ -31,7 +32,7 @@ TagManager:
   - Portal
   - Star
   - Bomb
-  - 
+  - SpikeBall
   - 
   - 
   - 
