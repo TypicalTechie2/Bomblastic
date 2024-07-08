@@ -38,13 +38,13 @@ public class PlayerController : MonoBehaviour
     public Rigidbody playerRb;
     public NavMeshAgent playerNavMesh;
     public ParticleSystem[] dustTrail;
-    public SceneTransition sceneTransitionScript;
     public Star starScript;
     public TMP_Text scoreText;
     public GameManager gameManagerScript;
     public Joystick joystick;
     public Button bombButton;
     public Image[] keysActivationImage;
+    public SceneTransition sceneTransitionScript;
 
     private void Awake()
     {
@@ -200,7 +200,7 @@ public class PlayerController : MonoBehaviour
             playerAudio.PlayOneShot(playerHitClip, 1f);
             playerAudio.PlayOneShot(playerDeathClip, 0.3f);
             playerNavMesh.enabled = false;
-            Debug.Log("Collded with Enemy");
+            Debug.Log("Collded with: " + other.gameObject.name);
 
             StartCoroutine(ReactToEnemyCollide());
         }
@@ -212,6 +212,17 @@ public class PlayerController : MonoBehaviour
             scoreText.text = "Score: " + ScoreManager.instance.currentScore.ToString();
             Debug.Log("Current Score: " + ScoreManager.instance.currentScore);
             Destroy(other.gameObject, 1f);
+        }
+
+        if (other.gameObject.CompareTag("Rotator"))
+        {
+            isGameActive = false;
+            playerAudio.PlayOneShot(playerHitClip, 1f);
+            playerAudio.PlayOneShot(playerDeathClip, 0.3f);
+            playerNavMesh.enabled = false;
+            Debug.Log("Collded with: " + other.gameObject.name);
+
+            StartCoroutine(ReactToEnemyCollide());
         }
     }
 
@@ -296,6 +307,20 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator RotateOnPortalEnter()
     {
+        gameManagerScript.pauseButton.gameObject.SetActive(false);
+        gameManagerScript.toggleImage.gameObject.SetActive(false);
+        gameManagerScript.playerJoystick.gameObject.SetActive(false);
+        gameManagerScript.BombButtonBackgroundImage.gameObject.SetActive(false);
+        scoreText.gameObject.SetActive(false);
+        gameManagerScript.keyImages.SetActive(false);
+
+
+        foreach (Image keyImg in keysActivationImage)
+        {
+            keyImg.gameObject.SetActive(false);
+            yield return null; // Yield to the next frame
+        }
+
         // Play portal entry sound only once
         if (!enteredPortal)
         {

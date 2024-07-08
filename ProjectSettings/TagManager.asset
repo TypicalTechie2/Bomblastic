@@ -17,6 +17,7 @@ TagManager:
   - Slider
   - BackgroundMusic
   - SpikeBall
+  - Rotator
   layers:
   - Default
   - TransparentFX
@@ -33,7 +34,7 @@ TagManager:
   - Star
   - Bomb
   - SpikeBall
-  - 
+  - Rotator Obstacle
   - 
   - 
   - 

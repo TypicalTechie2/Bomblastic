@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
     public Button resumeButton;
     public Button homeButton;
     public Button musicButton;
-    public Joystick joystick;
 
     private void Awake()
     {
@@ -46,12 +45,14 @@ public class GameManager : MonoBehaviour
         audioManagerScript.ButtonOnClickAudio();
         Time.timeScale = 0.0f;
         pauseButton.gameObject.SetActive(false);
+        keyImages.gameObject.SetActive(false);
         inGameMenuImage.gameObject.SetActive(true);
     }
 
     public void ResumeGame()
     {
         playerJoystick.gameObject.SetActive(true);
+        keyImages.gameObject.SetActive(false);
         BombButtonBackgroundImage.gameObject.SetActive(true);
         audioManagerScript.ButtonOnClickAudio();
         audioManagerScript.ResumeMusic();
@@ -125,7 +126,7 @@ public class GameManager : MonoBehaviour
         pauseButton.gameObject.SetActive(false);
         toggleImage.gameObject.SetActive(false);
         BombButtonBackgroundImage.gameObject.SetActive(false);
-        joystick.gameObject.SetActive(false);
+        playerJoystick.gameObject.SetActive(false);
         keyImages.gameObject.SetActive(false);
     }
 }

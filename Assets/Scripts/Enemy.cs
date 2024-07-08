@@ -47,10 +47,12 @@ public class Enemy : MonoBehaviour
             agent.isStopped = true;
             enemyAnimator.SetBool("isRunning", false);
         }
-        else
+
+        else if (!playerCameraScript.isMovingCamera || !isCollidedWithPlayer)
         {
-            // Resume normal behavior
+            // Pause enemy movement
             agent.isStopped = false;
+            enemyAnimator.SetBool("isRunning", true);
 
             if (isPlayerVisible)
             {
