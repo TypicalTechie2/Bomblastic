@@ -4121,6 +4121,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rotator Obstacle (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4350395104863466961, guid: 026a7238f92ca6849af9b12eed13d596,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5915835994548538367, guid: 026a7238f92ca6849af9b12eed13d596,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5422445714378215467, guid: 026a7238f92ca6849af9b12eed13d596, type: 3}
     m_RemovedGameObjects: []
@@ -5050,6 +5060,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rotator Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350395104863466961, guid: 026a7238f92ca6849af9b12eed13d596,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5915835994548538367, guid: 026a7238f92ca6849af9b12eed13d596,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13208,6 +13228,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 1685225062595658662, guid: 1abb58b83326aa04c8e5fed27cf4a1c5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1685225062595658662, guid: 1abb58b83326aa04c8e5fed27cf4a1c5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 2029100230089759004, guid: 1abb58b83326aa04c8e5fed27cf4a1c5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13257,6 +13287,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072265410192802985, guid: 1abb58b83326aa04c8e5fed27cf4a1c5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2643864371463020890, guid: 1abb58b83326aa04c8e5fed27cf4a1c5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4923040435685514509, guid: 1abb58b83326aa04c8e5fed27cf4a1c5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465100871338413550, guid: 1abb58b83326aa04c8e5fed27cf4a1c5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8494504110580012777, guid: 1abb58b83326aa04c8e5fed27cf4a1c5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13922,7 +13977,6 @@ MonoBehaviour:
   pauseButton: {fileID: 929940497}
   inGameMenuImage: {fileID: 1898800295}
   BombButtonBackgroundImage: {fileID: 535394977}
-  hasGameBegun: 0
   audioManagerScript: {fileID: 1223602644}
   restartMenuImage: {fileID: 872188668}
   keyImages: {fileID: 237406200}
@@ -13933,6 +13987,7 @@ MonoBehaviour:
   resumeButton: {fileID: 302352304}
   homeButton: {fileID: 1878653602}
   musicButton: {fileID: 942200427}
+  playerCameraScript: {fileID: 1814670551}
 --- !u!114 &1407392970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18504,12 +18559,17 @@ PrefabInstance:
     - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18,
         type: 3}
@@ -18584,12 +18644,17 @@ PrefabInstance:
     - target: {fileID: 8170153791961219456, guid: 0d230cc8be529a542a08cb878ab14b18,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 8170153791961219456, guid: 0d230cc8be529a542a08cb878ab14b18,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791961219456, guid: 0d230cc8be529a542a08cb878ab14b18,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 8170153791961219459, guid: 0d230cc8be529a542a08cb878ab14b18,
         type: 3}
@@ -22883,7 +22948,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 54628aafa20f64b40ae661038ee7abf0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3a3e79f637a885b48bb7d78aca346c00, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

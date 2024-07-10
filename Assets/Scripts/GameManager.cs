@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     public Button pauseButton;
     public Image inGameMenuImage;
     public Image BombButtonBackgroundImage;
-    public bool hasGameBegun;
     public AudioManager audioManagerScript;
     public Image restartMenuImage;
     public GameObject keyImages;
@@ -84,7 +83,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    private IEnumerator UIVisibleDelayAtStart()
+    public IEnumerator UIVisibleDelayAtStart()
     {
         toggleImage.gameObject.SetActive(false);
         keyImages.SetActive(false);

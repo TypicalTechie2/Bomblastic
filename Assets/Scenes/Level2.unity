@@ -1487,22 +1487,22 @@ PrefabInstance:
     - target: {fileID: -4678516299208728659, guid: fe9c1ba78689d1942a884c084adfc463,
         type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: -2310256840845302790, guid: fe9c1ba78689d1942a884c084adfc463,
         type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: -1236129307979582695, guid: fe9c1ba78689d1942a884c084adfc463,
         type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 531526996187658846, guid: fe9c1ba78689d1942a884c084adfc463,
         type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fe9c1ba78689d1942a884c084adfc463,
         type: 3}
@@ -1512,7 +1512,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: fe9c1ba78689d1942a884c084adfc463,
         type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fe9c1ba78689d1942a884c084adfc463,
         type: 3}
@@ -1522,12 +1522,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: fe9c1ba78689d1942a884c084adfc463,
         type: 3}
       propertyPath: m_TagString
-      value: SpikeBall
+      value: Obstacle
       objectReference: {fileID: 0}
     - target: {fileID: 7944627843770820638, guid: fe9c1ba78689d1942a884c084adfc463,
         type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16986,7 +16986,6 @@ MonoBehaviour:
   pauseButton: {fileID: 1688085149}
   inGameMenuImage: {fileID: 1480955254}
   BombButtonBackgroundImage: {fileID: 1724073914}
-  hasGameBegun: 0
   audioManagerScript: {fileID: 1779997704}
   restartMenuImage: {fileID: 202873502}
   keyImages: {fileID: 1552709846}
@@ -16997,6 +16996,7 @@ MonoBehaviour:
   resumeButton: {fileID: 1212592732}
   homeButton: {fileID: 1237784570}
   musicButton: {fileID: 396333305}
+  playerCameraScript: {fileID: 540007734}
 --- !u!114 &941690433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18294,7 +18294,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1174122685}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -18302,7 +18302,7 @@ Transform:
   - {fileID: 259585996}
   - {fileID: 85341687}
   - {fileID: 2054181586}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1349043425}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1181360183
 PrefabInstance:
@@ -20437,6 +20437,7 @@ Transform:
   - {fileID: 218275012}
   - {fileID: 1676195740}
   - {fileID: 1184579106}
+  - {fileID: 1174122686}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1349043426
@@ -20976,7 +20977,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 54628aafa20f64b40ae661038ee7abf0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3a3e79f637a885b48bb7d78aca346c00, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -22645,12 +22646,17 @@ PrefabInstance:
     - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18,
         type: 3}
@@ -22725,12 +22731,17 @@ PrefabInstance:
     - target: {fileID: 8170153791961219456, guid: 0d230cc8be529a542a08cb878ab14b18,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 8170153791961219456, guid: 0d230cc8be529a542a08cb878ab14b18,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791961219456, guid: 0d230cc8be529a542a08cb878ab14b18,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 8170153791961219459, guid: 0d230cc8be529a542a08cb878ab14b18,
         type: 3}
@@ -26822,22 +26833,22 @@ PrefabInstance:
     - target: {fileID: -4678516299208728659, guid: fe9c1ba78689d1942a884c084adfc463,
         type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: -2310256840845302790, guid: fe9c1ba78689d1942a884c084adfc463,
         type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: -1236129307979582695, guid: fe9c1ba78689d1942a884c084adfc463,
         type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 531526996187658846, guid: fe9c1ba78689d1942a884c084adfc463,
         type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fe9c1ba78689d1942a884c084adfc463,
         type: 3}
@@ -26847,7 +26858,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: fe9c1ba78689d1942a884c084adfc463,
         type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fe9c1ba78689d1942a884c084adfc463,
         type: 3}
@@ -26857,12 +26868,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: fe9c1ba78689d1942a884c084adfc463,
         type: 3}
       propertyPath: m_TagString
-      value: SpikeBall
+      value: Obstacle
       objectReference: {fileID: 0}
     - target: {fileID: 7944627843770820638, guid: fe9c1ba78689d1942a884c084adfc463,
         type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27744,6 +27755,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spike Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 1685225062595658662, guid: 1abb58b83326aa04c8e5fed27cf4a1c5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1685225062595658662, guid: 1abb58b83326aa04c8e5fed27cf4a1c5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 2029100230089759004, guid: 1abb58b83326aa04c8e5fed27cf4a1c5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -27794,6 +27815,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2072265410192802985, guid: 1abb58b83326aa04c8e5fed27cf4a1c5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2643864371463020890, guid: 1abb58b83326aa04c8e5fed27cf4a1c5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4923040435685514509, guid: 1abb58b83326aa04c8e5fed27cf4a1c5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465100871338413550, guid: 1abb58b83326aa04c8e5fed27cf4a1c5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8494504110580012777, guid: 1abb58b83326aa04c8e5fed27cf4a1c5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27813,7 +27859,6 @@ SceneRoots:
   - {fileID: 1926630066}
   - {fileID: 1375507919}
   - {fileID: 1141678844}
-  - {fileID: 1174122686}
   - {fileID: 1619550256}
   - {fileID: 941690434}
   - {fileID: 1779997706}

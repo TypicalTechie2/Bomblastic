@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7471029094798304993}
   - component: {fileID: 2956493374388450896}
   - component: {fileID: 5037720913626925704}
-  m_Layer: 15
+  m_Layer: 14
   m_Name: Rotator Holder
-  m_TagString: Rotator
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,9 +122,9 @@ GameObject:
   - component: {fileID: 2837066813912880132}
   - component: {fileID: 5997284743509215845}
   - component: {fileID: 616572354094399904}
-  m_Layer: 15
+  m_Layer: 14
   m_Name: Rotator Obstacle
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -242,9 +242,9 @@ GameObject:
   - component: {fileID: 384060872166101234}
   - component: {fileID: 7227127684522205342}
   - component: {fileID: 2886344284409990886}
-  m_Layer: 15
+  m_Layer: 14
   m_Name: Rotator
-  m_TagString: Rotator
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -349,9 +349,9 @@ GameObject:
   - component: {fileID: 3069365689254346573}
   - component: {fileID: 614036095932856648}
   - component: {fileID: 2247378184065704625}
-  m_Layer: 15
+  m_Layer: 14
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

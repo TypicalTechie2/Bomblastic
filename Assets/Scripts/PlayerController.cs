@@ -177,6 +177,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(RotateOnPortalEnter());
             StartCoroutine(sceneTransitionScript.EndScreenTransition());
             playerCameraScript.MoveCameraToPosition(transform.position + new Vector3(0, 5, -0.5f));
+            gameObject.layer = 10;
         }
 
         if (other.gameObject.CompareTag("Key"))
@@ -194,7 +195,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(ActivatePortal());
         }
 
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Obstacle"))
         {
             isGameActive = false;
             playerAudio.PlayOneShot(playerHitClip, 1f);
@@ -213,22 +214,11 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Current Score: " + ScoreManager.instance.currentScore);
             Destroy(other.gameObject, 1f);
         }
-
-        if (other.gameObject.CompareTag("Rotator"))
-        {
-            isGameActive = false;
-            playerAudio.PlayOneShot(playerHitClip, 1f);
-            playerAudio.PlayOneShot(playerDeathClip, 0.3f);
-            playerNavMesh.enabled = false;
-            Debug.Log("Collded with: " + other.gameObject.name);
-
-            StartCoroutine(ReactToEnemyCollide());
-        }
     }
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("SpikeBall") && !playerCameraScript.isMovingCamera)
+        if (other.gameObject.CompareTag("Obstacle") && !playerCameraScript.isMovingCamera)
         {
             isGameActive = false;
             playerAudio.PlayOneShot(playerHitClip, 1f);
