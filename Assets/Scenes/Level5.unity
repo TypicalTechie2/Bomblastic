@@ -96,7 +96,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: dc9a649e9da7d394fb0ff804df87c34a,
+    type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: b5ed1c71173a6824e89b49373079b277,
     type: 2}
 --- !u!196 &4
@@ -210,7 +211,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ff3e8a77ac846d04a9157abc234a1d9b, type: 2}
+      objectReference: {fileID: 2100000, guid: 940010f542cb0e34db7efe539f5fc3e0, type: 2}
     - target: {fileID: -7511558181221131132, guid: 54f8ae5955976ec4780f905785b407f6,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
@@ -1781,6 +1782,8 @@ MonoBehaviour:
   rotateDuration: 3
   keyCount: 0
   currentScore: 0
+  currentHintCount: 0
+  totalHintCount: 4
   playerAudio: {fileID: 95403222}
   playerHitClip: {fileID: 8300000, guid: 6fb10005ee1f73844bfd4c5e367e9ece, type: 3}
   bombSpawnClip: {fileID: 8300000, guid: 420601b6e3897354992a8db94b37893a, type: 3}
@@ -12883,7 +12886,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.33333334
+  m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: e34d9fda2ff386d45a373999ac9098f3, type: 2}
   m_BuildHeightMesh: 0
@@ -12914,7 +12917,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.25
+  m_VoxelSize: 0.33333334
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 479be04bbbeddf143a7c0e696644fb04, type: 2}
   m_BuildHeightMesh: 0
@@ -13373,8 +13376,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1.5
-      minScalar: 0.5
+      scalar: 0.5
+      minScalar: 0.25
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -18079,7 +18082,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ff3e8a77ac846d04a9157abc234a1d9b, type: 2}
+      objectReference: {fileID: 2100000, guid: 940010f542cb0e34db7efe539f5fc3e0, type: 2}
     - target: {fileID: -7511558181221131132, guid: 54f8ae5955976ec4780f905785b407f6,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
@@ -18665,7 +18668,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8d6bf2da5a7fe4645b69a3a488b42d3e, type: 2}
+  - {fileID: 2100000, guid: 24c60ebd2987c3c47b32c5525e0afab2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -24169,7 +24172,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ff3e8a77ac846d04a9157abc234a1d9b, type: 2}
+      objectReference: {fileID: 2100000, guid: 940010f542cb0e34db7efe539f5fc3e0, type: 2}
     - target: {fileID: -7511558181221131132, guid: 54f8ae5955976ec4780f905785b407f6,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
@@ -24280,7 +24283,6 @@ MonoBehaviour:
   resumeButton: {fileID: 1062017243}
   homeButton: {fileID: 510367287}
   musicButton: {fileID: 625412069}
-  playerCameraScript: {fileID: 1287148778}
 --- !u!114 &1313893844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27784,17 +27786,17 @@ PrefabInstance:
     - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.75
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.75
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.75
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18,
         type: 3}
@@ -28679,7 +28681,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ff3e8a77ac846d04a9157abc234a1d9b, type: 2}
+      objectReference: {fileID: 2100000, guid: 940010f542cb0e34db7efe539f5fc3e0, type: 2}
     - target: {fileID: -7511558181221131132, guid: 54f8ae5955976ec4780f905785b407f6,
         type: 3}
       propertyPath: m_Materials.Array.data[1]

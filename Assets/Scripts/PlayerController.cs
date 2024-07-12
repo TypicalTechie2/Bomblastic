@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public float rotateDuration = 3f;
     public int keyCount = 0;
     public int currentScore;
+    public int currentHintCount;
+    public int totalHintCount = 4;
     public AudioSource playerAudio;
     public AudioClip playerHitClip;
     public AudioClip bombSpawnClip;
@@ -30,6 +32,7 @@ public class PlayerController : MonoBehaviour
     public GameObject explosionParticlePrefab;
     public GameObject bombBulletPrefab;
     public GameObject portal;
+    private GameObject turnerObstacle;
     public bool bombPlanted;
     public bool keyObtained;
     public bool isGameActive;
@@ -48,7 +51,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-
+        turnerObstacle = GameObject.Find("Turner Obstacle");
     }
 
     // Start is called before the first frame update
@@ -58,6 +61,7 @@ public class PlayerController : MonoBehaviour
         bombPlanted = false;
         keyObtained = false;
         keyCount = 0;
+        currentHintCount = 0;
 
         scoreText.text = "Score: " + ScoreManager.instance.currentScore.ToString();
     }
@@ -81,6 +85,28 @@ public class PlayerController : MonoBehaviour
         else if (!playerCameraScript.isMovingCamera)
         {
             gameObject.layer = 9;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (!playerCameraScript.isMovingCamera && isGameActive && !enteredPortal)
+        {
+            // Reset Rigidbody velocity and angular velocity if no input
+            if (Mathf.Abs(joystick.Horizontal) < 0.1f && Mathf.Abs(joystick.Vertical) < 0.1f &&
+                Mathf.Abs(Input.GetAxis("Horizontal")) < 0.1f && Mathf.Abs(Input.GetAxis("Vertical")) < 0.1f)
+            {
+                playerRb.velocity = Vector3.zero;
+                playerRb.angularVelocity = Vector3.zero;
+            }
+        }
+
+        // Clamp the y position of the player to not exceed 350
+        Vector3 position = playerRb.position;
+        if (position.y > 365f)
+        {
+            position.y = 365f;
+            playerRb.position = position;
         }
     }
 
@@ -214,12 +240,19 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Current Score: " + ScoreManager.instance.currentScore);
             Destroy(other.gameObject, 1f);
         }
+
+        if (other.gameObject.CompareTag("Hint"))
+        {
+            currentHintCount += 1;
+            Debug.Log("Current Hint Count: " + currentHintCount);
+        }
     }
 
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Obstacle") && !playerCameraScript.isMovingCamera)
         {
+            other.gameObject.layer = 10;
             isGameActive = false;
             playerAudio.PlayOneShot(playerHitClip, 1f);
             playerAudio.PlayOneShot(playerDeathClip, 0.3f);
@@ -282,17 +315,6 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         gameManagerScript.ShowRestartMenu();
-    }
-
-    private void FixedUpdate()
-    {
-        // Clamp the y position of the player to not exceed 350
-        Vector3 position = playerRb.position;
-        if (position.y > 365f)
-        {
-            position.y = 365f;
-            playerRb.position = position;
-        }
     }
 
     private IEnumerator RotateOnPortalEnter()

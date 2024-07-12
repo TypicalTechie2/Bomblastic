@@ -96,7 +96,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: f8e563ea6f9e5c94896a28ad7766d956,
+    type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 1303af90ba3fb204f979ee7f2f3ab32d,
     type: 2}
 --- !u!196 &4
@@ -1651,17 +1652,17 @@ PrefabInstance:
     - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.75
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.75
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.75
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18,
         type: 3}
@@ -7860,7 +7861,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.33333334
+  m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 6610ded0e2312ab4ebc49e3d1162a235, type: 2}
   m_BuildHeightMesh: 0
@@ -7891,7 +7892,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.25
+  m_VoxelSize: 0.33333334
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: e03e482fb8863f240a8054d470b0c5b0, type: 2}
   m_BuildHeightMesh: 0
@@ -15188,6 +15189,8 @@ MonoBehaviour:
   rotateDuration: 3
   keyCount: 0
   currentScore: 0
+  currentHintCount: 0
+  totalHintCount: 4
   playerAudio: {fileID: 967404508}
   playerHitClip: {fileID: 8300000, guid: 6fb10005ee1f73844bfd4c5e367e9ece, type: 3}
   bombSpawnClip: {fileID: 8300000, guid: 420601b6e3897354992a8db94b37893a, type: 3}
