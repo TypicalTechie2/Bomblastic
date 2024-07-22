@@ -5,6 +5,10 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 public class PlayerController : MonoBehaviour
 {
     public float bombBulletSpeed = 10f;
@@ -18,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public int currentScore;
     public int currentHintCount;
     public int totalHintCount = 4;
+    public int butterflyCollectCount;
     public AudioSource playerAudio;
     public AudioClip playerHitClip;
     public AudioClip bombSpawnClip;
@@ -32,7 +37,6 @@ public class PlayerController : MonoBehaviour
     public GameObject explosionParticlePrefab;
     public GameObject bombBulletPrefab;
     public GameObject portal;
-    private GameObject turnerObstacle;
     public bool bombPlanted;
     public bool keyObtained;
     public bool isGameActive;
@@ -51,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        turnerObstacle = GameObject.Find("Turner Obstacle");
+
     }
 
     // Start is called before the first frame update
@@ -62,8 +66,41 @@ public class PlayerController : MonoBehaviour
         keyObtained = false;
         keyCount = 0;
         currentHintCount = 0;
+        butterflyCollectCount = 0;
 
         scoreText.text = "Score: " + ScoreManager.instance.currentScore.ToString();
+
+#if UNITY_EDITOR
+        // Check if the active build target is Android
+        if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android)
+        {
+            // Enable joystick, toggleImage, and BombButton Background Image
+            joystick.gameObject.SetActive(true);
+            gameManagerScript.toggleImage.gameObject.SetActive(true);
+            gameManagerScript.BombButtonBackgroundImage.gameObject.SetActive(true);
+        }
+        else
+        {
+            // Disable joystick, toggleImage, and BombButton Background Image
+            joystick.gameObject.SetActive(false);
+            gameManagerScript.toggleImage.gameObject.SetActive(false);
+            gameManagerScript.BombButtonBackgroundImage.gameObject.SetActive(false);
+        }
+#else
+        // Enable joystick, toggleImage, and BombButton Background Image only on Android builds
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            joystick.gameObject.SetActive(true);
+            gameManagerScript.toggleImage.gameObject.SetActive(true);
+            gameManagerScript.BombButtonBackgroundImage.gameObject.SetActive(true);
+        }
+        else
+        {
+            joystick.gameObject.SetActive(false);
+            gameManagerScript.toggleImage.gameObject.SetActive(false);
+            gameManagerScript.BombButtonBackgroundImage.gameObject.SetActive(false);
+        }
+#endif
     }
 
     // Update is called once per frame
@@ -197,7 +234,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Portal"))
+        if (other.gameObject.CompareTag("Portal") || other.gameObject.CompareTag("FinalReward"))
         {
             Debug.Log("Entered Portal");
             StartCoroutine(RotateOnPortalEnter());
@@ -221,7 +258,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(ActivatePortal());
         }
 
-        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Obstacle"))
+        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Obstacle") || other.gameObject.CompareTag("Boss Bullet"))
         {
             isGameActive = false;
             playerAudio.PlayOneShot(playerHitClip, 1f);
@@ -245,6 +282,15 @@ public class PlayerController : MonoBehaviour
         {
             currentHintCount += 1;
             Debug.Log("Current Hint Count: " + currentHintCount);
+        }
+
+        if (other.gameObject.CompareTag("Butterfly"))
+        {
+            butterflyCollectCount += 1;
+            Debug.Log("Current Hint Count: " + butterflyCollectCount);
+            other.gameObject.layer = 10;
+            Destroy(other.gameObject, 0.1f);
+
         }
     }
 

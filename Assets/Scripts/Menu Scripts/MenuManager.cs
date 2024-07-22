@@ -14,11 +14,13 @@ public class MenuManager : MonoBehaviour
     public GameObject characterB;
     public Image titleImage;
     public Image backgroundImage;
+    public Image howToPlayImage;
     public GameObject menuScreen;
     public Button playButton;
     public Button menuButton;
     public Button exitButton;
     public Button[] buttons;
+    public Button howToPlayButton;
     private static bool isFirstLoad = true;
 
     private void Awake()
@@ -85,6 +87,7 @@ public class MenuManager : MonoBehaviour
         playButton.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(false);
         menuButton.gameObject.SetActive(false);
+        howToPlayButton.gameObject.SetActive(false);
         menuScreen.SetActive(true);
     }
 
@@ -96,6 +99,29 @@ public class MenuManager : MonoBehaviour
         playButton.gameObject.SetActive(true);
         exitButton.gameObject.SetActive(true);
         menuButton.gameObject.SetActive(true);
+        howToPlayButton.gameObject.SetActive(true);
+    }
+
+    public void HowToPlayMenu()
+    {
+        menuAudio.PlayOneShot(ControlsButtonClip, 1f);
+        titleImage.gameObject.SetActive(false);
+        playButton.gameObject.SetActive(false);
+        exitButton.gameObject.SetActive(false);
+        menuButton.gameObject.SetActive(false);
+        howToPlayButton.gameObject.SetActive(false);
+        howToPlayImage.gameObject.SetActive(true);
+    }
+
+    public void CloseHowToPlayMenu()
+    {
+        menuAudio.PlayOneShot(ControlsButtonClip, 1f);
+        howToPlayImage.gameObject.SetActive(false);
+        titleImage.gameObject.SetActive(true);
+        playButton.gameObject.SetActive(true);
+        exitButton.gameObject.SetActive(true);
+        menuButton.gameObject.SetActive(true);
+        howToPlayButton.gameObject.SetActive(true);
     }
 
     public void ExitGame()

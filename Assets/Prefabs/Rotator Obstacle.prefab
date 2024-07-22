@@ -139,7 +139,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -29.5, y: 0.25, z: 19}
-  m_LocalScale: {x: 100, y: 25, z: 100}
+  m_LocalScale: {x: 50, y: 12.5, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7238804405451962120}
@@ -258,8 +258,8 @@ Transform:
   m_GameObject: {fileID: 5915835994548538367}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 20, y: 0.39999986, z: 0}
-  m_LocalScale: {x: 1, y: 20, z: 1}
+  m_LocalPosition: {x: 12, y: 0.39999986, z: 0}
+  m_LocalScale: {x: 1, y: 12, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7238804405451962120}
@@ -348,7 +348,6 @@ GameObject:
   - component: {fileID: 2185338891789658729}
   - component: {fileID: 3069365689254346573}
   - component: {fileID: 614036095932856648}
-  - component: {fileID: 2247378184065704625}
   m_Layer: 14
   m_Name: Capsule
   m_TagString: Obstacle
@@ -365,7 +364,7 @@ Transform:
   m_GameObject: {fileID: 8580309468756048975}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 39.396, y: 0.3999999, z: 0}
+  m_LocalPosition: {x: 23.5, y: 0.3999999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -421,26 +420,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2247378184065704625
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8580309468756048975}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}

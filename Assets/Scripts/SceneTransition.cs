@@ -1,12 +1,21 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneTransition : MonoBehaviour
 {
+    public SpawnManager spawnManagerScript;
+    public Image victoryImage;
     public Animator transitionAnim;
     public float transitionTime = 1.5f;
-    private int lastSceneIndex = 10;
+    private int lastSceneIndex = 8;
+
+    private void Start()
+    {
+
+    }
+
 
     public IEnumerator EndScreenTransition()
     {
@@ -24,9 +33,12 @@ public class SceneTransition : MonoBehaviour
         }
         else
         {
-            // Handle the case where the player is at the last scene
-            // For example, you might load a victory screen or return to the main menu
-            SceneManager.LoadScene("VictoryScreen"); // Replace with the actual name of your victory scene
+            spawnManagerScript.audioSource.PlayOneShot(spawnManagerScript.victoryClip, 1f);
+
+            yield return new WaitForSecondsRealtime(1.5f);
+
+            Time.timeScale = 0;
+            victoryImage.gameObject.SetActive(true);
         }
     }
 

@@ -5,10 +5,13 @@ using UnityEngine;
 
 public class BombBullet : MonoBehaviour
 {
+    private SpawnManager spawnManagerScript;
+    public GameObject bossEyeExplosion;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        spawnManagerScript = FindObjectOfType<SpawnManager>();
     }
 
     // Update is called once per frame
@@ -19,11 +22,6 @@ public class BombBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-        }
-
         if (other.gameObject.CompareTag("Brick"))
         {
             Destroy(gameObject);
@@ -33,9 +31,23 @@ public class BombBullet : MonoBehaviour
             StartCoroutine(UpdateNavMesh());
         }
 
-        if (other.gameObject.CompareTag("Block"))
+        if (other.gameObject.CompareTag("Block") || other.gameObject.CompareTag("Ground"))
         {
             Destroy(gameObject);
+        }
+
+        if (other.gameObject.CompareTag("BossEye"))
+        {
+            Vector3 newPos = new Vector3(other.transform.position.x, 1.5f, other.transform.position.z);
+            GameObject explosions = Instantiate(bossEyeExplosion, newPos, Quaternion.identity);
+
+            Destroy(gameObject);
+            Destroy(other.gameObject);
+            Destroy(explosions, 1.5f);
+            Debug.Log("Destroyed: " + other.gameObject.name);
+
+            // Notify the SpawnManager that a bossEye has been destroyed
+            spawnManagerScript.BossEyeDestroyed();
         }
     }
 

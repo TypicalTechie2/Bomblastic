@@ -20,6 +20,13 @@ TagManager:
   - Potion
   - Hint
   - TurnerButton
+  - Bubble
+  - FinalReward
+  - Butterfly
+  - Boss Bullet
+  - Boss
+  - BossEye
+  - LandingMark
   layers:
   - Default
   - TransparentFX
@@ -37,7 +44,7 @@ TagManager:
   - Bomb
   - Obstacle
   - Hint
-  - 
+  - Boss Bullet
   - 
   - 
   - 

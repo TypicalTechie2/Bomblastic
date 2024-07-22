@@ -21,30 +21,42 @@ public class TurnerObject : MonoBehaviour
 
     private void Update()
     {
-        if (playerControllerScript.currentHintCount == playerControllerScript.totalHintCount)
+        if (playerControllerScript.isGameActive)
         {
-            if (audioCoroutine == null)
+            if (playerControllerScript.currentHintCount == playerControllerScript.totalHintCount)
             {
-                audioCoroutine = StartCoroutine(PlayAudioRepeatedly());
+                if (audioCoroutine == null)
+                {
+                    audioCoroutine = StartCoroutine(PlayAudioRepeatedly());
+                }
+
+
+                turnerButton.SetActive(true);
+                turnerButtonImage.gameObject.SetActive(true);
             }
 
+            if (turnerButtonScript.hasPushedButton)
+            {
+                StopRepeatingAudio();
+                turnerButtonImage.gameObject.SetActive(false);
+                animator.SetBool("isRotating", false);
+                //gameObject.layer = 10;
+            }
 
-            turnerButton.SetActive(true);
-            turnerButtonImage.gameObject.SetActive(true);
-        }
-
-        if (turnerButtonScript.hasPushedButton)
-        {
-            StopRepeatingAudio();
-            turnerButtonImage.gameObject.SetActive(false);
-            animator.SetBool("isRotating", false);
-            //gameObject.layer = 10;
+            else
+            {
+                animator.SetBool("isRotating", true);
+            }
         }
 
         else
         {
-            animator.SetBool("isRotating", true);
+            StopAllCoroutines();
+            turnerButtonImage.gameObject.SetActive(false);
         }
+
+
+
     }
 
     private IEnumerator PlayAudioRepeatedly()
