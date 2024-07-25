@@ -15,8 +15,6 @@ Material:
   - _DETAIL_SCALED
   - _METALLICSPECGLOSSMAP
   - _NORMALMAP
-  - _OCCLUSIONMAP
-  - _PARALLAXMAP
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -33,8 +31,12 @@ Material:
         m_Texture: {fileID: 2800000, guid: 86f13f7fc0b8482489e0a4d7c8955b01, type: 3}
         m_Scale: {x: 1, y: 7}
         m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 2800000, guid: 629a715cac597504d821dc4c1612c3fb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 3ed8e27f69dcd5449898341499667bc8, type: 3}
+        m_Texture: {fileID: 2800000, guid: 86f13f7fc0b8482489e0a4d7c8955b01, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -46,19 +48,24 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 86f13f7fc0b8482489e0a4d7c8955b01, type: 3}
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _DetailAlbedoMapScale: 0
     - _OcclusionStrength: 0
-    - _Smoothness: 0
+    - _Parallax: 0.005
+    - _Smoothness: 0.2
     - _SmoothnessTextureChannel: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0.3515327, g: 0.19120172, b: 0.10224175, a: 1}
+    - _EmissionColor: {r: 0.0060488326, g: 0.11953845, b: 0.21586053, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &496339198157927751
 MonoBehaviour:

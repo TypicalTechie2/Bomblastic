@@ -22,6 +22,7 @@ public class MenuManager : MonoBehaviour
     public Button[] buttons;
     public Button howToPlayButton;
     private static bool isFirstLoad = true;
+    private bool audioPlayed = false;
 
     private void Awake()
     {
@@ -70,14 +71,23 @@ public class MenuManager : MonoBehaviour
 
     private IEnumerator startButtonDelay()
     {
-        menuAudio.PlayOneShot(playButtonClip, 1f);
+        if (!audioPlayed)
+        {
+            audioPlayed = true;
+            menuAudio.PlayOneShot(playButtonClip, 1f);
 
-        yield return new WaitForSeconds(0.75f);
+            yield return new WaitForSeconds(0.75f);
 
-        characterA.SetActive(false);
-        characterB.SetActive(false);
-        backgroundImage.gameObject.SetActive(false);
-        SceneManager.LoadScene(1);
+            characterA.SetActive(false);
+            characterB.SetActive(false);
+            backgroundImage.gameObject.SetActive(false);
+            SceneManager.LoadScene(1);
+
+            yield return new WaitForSeconds(1f);
+
+            audioPlayed = false;
+        }
+
     }
 
     public void EnterMenuScreen()

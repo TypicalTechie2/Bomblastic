@@ -71,21 +71,21 @@ public class PlayerController : MonoBehaviour
         scoreText.text = "Score: " + ScoreManager.instance.currentScore.ToString();
 
 #if UNITY_EDITOR
-        // Check if the active build target is Android
-        if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android)
-        {
-            // Enable joystick, toggleImage, and BombButton Background Image
-            joystick.gameObject.SetActive(true);
-            gameManagerScript.toggleImage.gameObject.SetActive(true);
-            gameManagerScript.BombButtonBackgroundImage.gameObject.SetActive(true);
-        }
-        else
-        {
-            // Disable joystick, toggleImage, and BombButton Background Image
-            joystick.gameObject.SetActive(false);
-            gameManagerScript.toggleImage.gameObject.SetActive(false);
-            gameManagerScript.BombButtonBackgroundImage.gameObject.SetActive(false);
-        }
+    // Check if the active build target is Android
+    if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android)
+    {
+        // Enable joystick, toggleImage, and BombButton Background Image
+        joystick.gameObject.SetActive(true);
+        gameManagerScript.toggleImage.gameObject.SetActive(true);
+        gameManagerScript.BombButtonBackgroundImage.gameObject.SetActive(true);
+    }
+    else
+    {
+        // Disable joystick, toggleImage, and BombButton Background Image
+        joystick.gameObject.SetActive(false);
+        gameManagerScript.toggleImage.gameObject.SetActive(false);
+        gameManagerScript.BombButtonBackgroundImage.gameObject.SetActive(false);
+    }
 #else
         // Enable joystick, toggleImage, and BombButton Background Image only on Android builds
         if (Application.platform == RuntimePlatform.Android)

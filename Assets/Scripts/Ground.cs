@@ -25,7 +25,7 @@ public class Ground : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Boss Bullet"))
         {
-            playerAudio.PlayOneShot(blastSFX, 1f);
+            playerAudio.PlayOneShot(blastSFX, 0.75f);
         }
     }
 }

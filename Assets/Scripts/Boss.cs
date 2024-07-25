@@ -42,7 +42,7 @@ public class Boss : MonoBehaviour
 
             isOpen = true;
 
-            audioSource.PlayOneShot(bulletSpawnClip, 1f);
+            audioSource.PlayOneShot(bulletSpawnClip, 0.75f);
 
             bossAnimator.SetBool("isOpen", true);
 

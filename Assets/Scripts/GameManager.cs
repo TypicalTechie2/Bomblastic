@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 public class GameManager : MonoBehaviour
 {
     public Button pauseButton;
@@ -51,13 +55,43 @@ public class GameManager : MonoBehaviour
     public void ResumeGame()
     {
         playerJoystick.gameObject.SetActive(true);
-        keyImages.gameObject.SetActive(false);
+        keyImages.gameObject.SetActive(true);
         BombButtonBackgroundImage.gameObject.SetActive(true);
         audioManagerScript.ButtonOnClickAudio();
         audioManagerScript.ResumeMusic();
         Time.timeScale = 1.0f;
         inGameMenuImage.gameObject.SetActive(false);
         pauseButton.gameObject.SetActive(true);
+
+#if UNITY_EDITOR
+        // Check if the active build target is Android
+        if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android)
+        {
+            playerJoystick.gameObject.SetActive(true);
+            BombButtonBackgroundImage.gameObject.SetActive(true);
+            toggleImage.gameObject.SetActive(true);
+        }
+        else
+        {
+            playerJoystick.gameObject.SetActive(false);
+            BombButtonBackgroundImage.gameObject.SetActive(false);
+            toggleImage.gameObject.SetActive(false);
+        }
+#else
+        // Enable joystick, toggleImage, and BombButton Background Image only on Android builds
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            playerJoystick.gameObject.SetActive(true);
+            BombButtonBackgroundImage.gameObject.SetActive(true);
+            toggleImage.gameObject.SetActive(true);
+        }
+        else
+        {
+            playerJoystick.gameObject.SetActive(false);
+            BombButtonBackgroundImage.gameObject.SetActive(false);
+            toggleImage.gameObject.SetActive(false);
+        }
+#endif
     }
 
     public void ReturnToMenu()
@@ -71,14 +105,14 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         ScoreManager.instance.ResetScore();
-        audioManagerScript.RestartButtonClip();
-
+        StartCoroutine(audioManagerScript.RestartButtonClip());
         StartCoroutine(RestartGameDelay());
+
     }
 
     private IEnumerator RestartGameDelay()
     {
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(0.4f);
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
@@ -94,12 +128,29 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
-        toggleImage.gameObject.SetActive(false);
-        keyImages.SetActive(true);
-        playerControllerScript.joystick.gameObject.SetActive(true);
-        playerControllerScript.scoreText.gameObject.SetActive(true);
         pauseButton.gameObject.SetActive(true);
-        BombButtonBackgroundImage.gameObject.SetActive(true);
+        keyImages.SetActive(true);
+        playerControllerScript.scoreText.gameObject.SetActive(true);
+
+#if UNITY_EDITOR
+        // Check if the active build target is Android
+        if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android)
+        {
+            toggleImage.gameObject.SetActive(true);
+            keyImages.SetActive(true);
+            playerControllerScript.joystick.gameObject.SetActive(true);
+            BombButtonBackgroundImage.gameObject.SetActive(true);
+        }
+#else
+        // Enable joystick, toggleImage, and BombButton Background Image only on Android builds
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            toggleImage.gameObject.SetActive(true);
+            keyImages.SetActive(true);
+            playerControllerScript.joystick.gameObject.SetActive(true);
+            BombButtonBackgroundImage.gameObject.SetActive(true);
+        }
+#endif
     }
 
     public void OpenVolumeMenu()

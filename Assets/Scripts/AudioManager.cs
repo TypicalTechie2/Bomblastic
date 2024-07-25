@@ -11,6 +11,7 @@ public class AudioManager : MonoBehaviour
     public Slider volumeSlider;
     public AudioClip buttonClickClip;
     public AudioClip restartButtonClip;
+    private bool audioPlayed = false;
 
     private void Awake()
     {
@@ -66,9 +67,15 @@ public class AudioManager : MonoBehaviour
         audioSource.UnPause();
     }
 
-    public void RestartButtonClip()
+    public IEnumerator RestartButtonClip()
     {
-        audioSource.PlayOneShot(restartButtonClip, 1f);
+        if (!audioPlayed)
+        {
+            audioPlayed = true;
+            audioSource.PlayOneShot(restartButtonClip, 1f);
+            yield return new WaitForSeconds(0.5f);
+            audioPlayed = false;
+        }
     }
 
     public void ButtonOnClickAudio()
