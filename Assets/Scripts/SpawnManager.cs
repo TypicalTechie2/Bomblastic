@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
@@ -19,13 +18,6 @@ public class SpawnManager : MonoBehaviour
     public bool isGateMoving = false;
     public int bossEyesDestroyedCount;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -33,6 +25,7 @@ public class SpawnManager : MonoBehaviour
         ActivateGatesOnKeyCollect();
     }
 
+    // Activates boss eyes and plays hint audio when specific conditions are met
     private void ActivateBossEyes()
     {
         if (playerControllerScript.currentHintCount == 4 && bossEyes[0] != null)
@@ -61,6 +54,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    // Handles the destruction of boss eyes and activation of keys
     public void BossEyeDestroyed()
     {
         // Increment the count of destroyed bossEyes
@@ -99,6 +93,7 @@ public class SpawnManager : MonoBehaviour
         // Add more conditions if there are more bossEyes and keys
     }
 
+    // Coroutine to repeatedly play the hint audio clip
     private IEnumerator PlayAudioRepeatedly()
     {
         while (true)
@@ -108,6 +103,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    // Starts the hint audio loop if not already running
     private void StartHintAudioLoop()
     {
         if (hintAudioCoroutine == null)
@@ -116,6 +112,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    // Stops the hint audio loop if running
     private void StopHintAudioLoop()
     {
         if (hintAudioCoroutine != null)
@@ -125,6 +122,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    // Activates gates based on the number of keys collected
     private void ActivateGatesOnKeyCollect()
     {
         if (playerControllerScript.keyCount == 1)
@@ -145,6 +143,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    // Coroutine to move a gate to a target position and then destroy it
     private IEnumerator MoveGateAndDestroy(int gateIndex)
     {
         isGateMoving = true;

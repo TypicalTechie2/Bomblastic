@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,33 +17,26 @@ public class AudioManager : MonoBehaviour
         LoadVolume();
         volumeSlider.onValueChanged.AddListener(SetVolume);
     }
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    // Sets the volume level and saves it to PlayerPrefs
     public void SetVolume(float volume)
     {
         audioSource.volume = volume;
         SaveVolume(volume);
     }
 
+    // Saves the volume level to PlayerPrefs
     public void SaveVolume(float volume)
     {
         PlayerPrefs.SetFloat(VolumePrefKey, volume);
     }
 
+    // Loads the volume level from PlayerPrefs and applies it
     public void LoadVolume()
     {
         if (PlayerPrefs.HasKey(VolumePrefKey))
         {
+            // Retrieve and apply saved volume
             float savedVolume = PlayerPrefs.GetFloat(VolumePrefKey);
             audioSource.volume = savedVolume;
             volumeSlider.value = savedVolume;
@@ -57,16 +49,19 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    // Pauses the audio playback
     public void PauseMusic()
     {
         audioSource.Pause();
     }
 
+    // Resumes the audio playback
     public void ResumeMusic()
     {
         audioSource.UnPause();
     }
 
+    // Plays the restart button sound and handles the cooldown to prevent overlapping
     public IEnumerator RestartButtonClip()
     {
         if (!audioPlayed)
@@ -78,6 +73,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    // Plays the button click sound
     public void ButtonOnClickAudio()
     {
         audioSource.PlayOneShot(buttonClickClip, 1f);

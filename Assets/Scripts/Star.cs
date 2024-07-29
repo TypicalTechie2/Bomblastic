@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Star : MonoBehaviour
@@ -31,6 +30,7 @@ public class Star : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, Time.time * rotationSpeed, 0f);
     }
 
+    // Method called when another collider enters the trigger collider
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -41,6 +41,7 @@ public class Star : MonoBehaviour
         }
     }
 
+    // Coroutine to move the star towards the player
     private IEnumerator MoveStar()
     {
         // Disable collisions while moving towards the player
@@ -60,6 +61,7 @@ public class Star : MonoBehaviour
         Destroy(gameObject);
     }
 
+    // Coroutine to smoothly move the star from start to end position over the given duration
     private IEnumerator SmoothMove(Vector3 start, Vector3 end, float duration)
     {
         float elapsedTime = 0f;

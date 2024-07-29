@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WayPoints : MonoBehaviour
 {
-    public Transform[] wayPoints;
+    public Transform[] wayPoints; // Array of waypoints to be visualized
 
+    // Method to draw gizmos in the editor to visualize waypoints
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -14,15 +13,18 @@ public class TurnerObject : MonoBehaviour
     public PlayerController playerControllerScript;
     private Coroutine audioCoroutine;
 
+    // Method called when the script instance is being loaded
     private void Awake()
     {
         animator = GetComponent<Animator>();
     }
 
+    // Method called once per frame
     private void Update()
     {
         if (playerControllerScript.isGameActive)
         {
+            // Check if the player has collected all hints
             if (playerControllerScript.currentHintCount == playerControllerScript.totalHintCount)
             {
                 if (audioCoroutine == null)
@@ -35,6 +37,7 @@ public class TurnerObject : MonoBehaviour
                 turnerButtonImage.gameObject.SetActive(true);
             }
 
+            // Check if the button has been pushed
             if (turnerButtonScript.hasPushedButton)
             {
                 StopRepeatingAudio();
@@ -59,6 +62,7 @@ public class TurnerObject : MonoBehaviour
 
     }
 
+    // Coroutine to play audio repeatedly until the button is pushed
     private IEnumerator PlayAudioRepeatedly()
     {
         while (!turnerButtonScript.hasPushedButton)
@@ -68,6 +72,7 @@ public class TurnerObject : MonoBehaviour
         }
     }
 
+    // Method to stop the repeating audio coroutine
     private void StopRepeatingAudio()
     {
         if (audioCoroutine != null)

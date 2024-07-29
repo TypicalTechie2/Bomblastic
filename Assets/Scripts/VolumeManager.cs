@@ -18,6 +18,7 @@ public class VolumeManager : MonoBehaviour
         }
     }
 
+    // Method called on the frame when a script is enabled just before any of the Update methods are called the first time
     private void Start()
     {
         // Load the saved volume setting
@@ -25,17 +26,20 @@ public class VolumeManager : MonoBehaviour
         SetVolume(savedVolume);
     }
 
+    // Method to set the volume and save it to PlayerPrefs
     public void SetVolume(float volume)
     {
         PlayerPrefs.SetFloat("Volume", volume);
         UpdateAllAudioSources(volume);
     }
 
+    // Method to get the saved volume setting from PlayerPrefs
     public float GetVolume()
     {
         return PlayerPrefs.GetFloat("Volume", 1.0f);
     }
 
+    // Method to update the volume of all background music AudioSources
     private void UpdateAllAudioSources(float volume)
     {
         // Find all AudioSources tagged as background music and update their volume

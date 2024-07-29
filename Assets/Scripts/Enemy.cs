@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -73,6 +72,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    // Method to move the enemy to a random waypoint
     void GoToRandomWaypoint()
     {
         if (waypoints.Length == 0)
@@ -100,6 +100,7 @@ public class Enemy : MonoBehaviour
 
         if (other.gameObject.CompareTag("Bullet"))
         {
+            // Handle collision with a bullet (e.g., play death sound, destroy enemy)
             Debug.Log("Collided with Bullet");
             StartCoroutine(ActivateEnemyExplosionParticle());
             enemyAudio.PlayOneShot(enemyDeathClip, 1f);
@@ -112,6 +113,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    // Coroutine to activate the enemy explosion particle effect
     IEnumerator ActivateEnemyExplosionParticle()
     {
         yield return new WaitForSeconds(0.1f);
@@ -123,12 +125,14 @@ public class Enemy : MonoBehaviour
         Destroy(explosion, 1.25f);
     }
 
+    // Method to switch to a new waypoint when colliding with another enemy
     void SwitchWaypointOnCollision()
     {
         isCollidingWithEnemy = false; // Reset collision flag
         GoToRandomWaypoint(); // Go to a new random waypoint
     }
 
+    // Method to chase the player
     void ChasePlayer()
     {
         enemyAnimator.SetBool("isRunning", true);

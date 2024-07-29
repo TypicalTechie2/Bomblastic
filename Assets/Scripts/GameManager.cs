@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -24,23 +23,13 @@ public class GameManager : MonoBehaviour
     public Button homeButton;
     public Button musicButton;
 
-    private void Awake()
-    {
-
-    }
-
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(UIVisibleDelayAtStart());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    // Method to pause the game
     public void PauseGame()
     {
         playerJoystick.gameObject.SetActive(false);
@@ -52,8 +41,10 @@ public class GameManager : MonoBehaviour
         inGameMenuImage.gameObject.SetActive(true);
     }
 
+    // Method to resume the game
     public void ResumeGame()
     {
+        // Enable/Disable UI Elements
         playerJoystick.gameObject.SetActive(true);
         keyImages.gameObject.SetActive(true);
         BombButtonBackgroundImage.gameObject.SetActive(true);
@@ -94,6 +85,7 @@ public class GameManager : MonoBehaviour
 #endif
     }
 
+    // Method to return to the main menu
     public void ReturnToMenu()
     {
         ScoreManager.instance.ResetScore();
@@ -102,6 +94,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1.0f;
     }
 
+    // Method to restart the game
     public void RestartGame()
     {
         ScoreManager.instance.ResetScore();
@@ -110,6 +103,7 @@ public class GameManager : MonoBehaviour
 
     }
 
+    // Coroutine to handle the delay before restarting the game
     private IEnumerator RestartGameDelay()
     {
         yield return new WaitForSeconds(0.4f);
@@ -117,6 +111,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    // Coroutine to handle the delay for UI visibility at the start of the game
     public IEnumerator UIVisibleDelayAtStart()
     {
         toggleImage.gameObject.SetActive(false);
@@ -153,6 +148,7 @@ public class GameManager : MonoBehaviour
 #endif
     }
 
+    // Method to open the volume menu
     public void OpenVolumeMenu()
     {
         audioManagerScript.ButtonOnClickAudio();
@@ -162,6 +158,7 @@ public class GameManager : MonoBehaviour
         musicVolumeObject.SetActive(true);
     }
 
+    // Method to close the volume menu
     public void CloseVolumeMenu()
     {
         audioManagerScript.ButtonOnClickAudio();
@@ -170,6 +167,8 @@ public class GameManager : MonoBehaviour
         homeButton.gameObject.SetActive(true);
         musicButton.gameObject.SetActive(true);
     }
+
+    // Method to show the restart menu
     public void ShowRestartMenu()
     {
         restartMenuImage.gameObject.SetActive(true);

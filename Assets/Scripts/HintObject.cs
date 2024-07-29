@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HintObject : MonoBehaviour
@@ -13,12 +12,6 @@ public class HintObject : MonoBehaviour
     private bool isMoving = false;
     private Transform playerTransform;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -30,6 +23,7 @@ public class HintObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // Check if the collider belongs to the player and if the hint is not already moving
         if (other.CompareTag("Player") && !isMoving)
         {
             audioSource.PlayOneShot(hintCollectClip, 1f);
@@ -40,6 +34,7 @@ public class HintObject : MonoBehaviour
         }
     }
 
+    // Coroutine to handle the movement and lifting of the hint object
     private IEnumerator MoveHint()
     {
         isMoving = true;
@@ -59,12 +54,14 @@ public class HintObject : MonoBehaviour
         Destroy(gameObject); // For example, destroy the key
     }
 
+    // Coroutine to smoothly move the hint object from a start position to an end position over a given duration
     private IEnumerator SmoothMove(Vector3 start, Vector3 end, float duration)
     {
         float elapsedTime = 0f;
 
         while (elapsedTime < duration)
         {
+            // Linearly interpolate between the start and end positions
             transform.position = Vector3.Lerp(start, end, elapsedTime / duration);
             elapsedTime += Time.deltaTime;
             yield return null;

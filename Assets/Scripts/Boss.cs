@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Boss : MonoBehaviour
@@ -34,6 +33,7 @@ public class Boss : MonoBehaviour
         }
     }
 
+    // Coroutine to handle the boss opening and spawning bullets
     private IEnumerator ToggleIsOpen()
     {
         while (playerControllerScript.isGameActive)
@@ -66,6 +66,7 @@ public class Boss : MonoBehaviour
         }
     }
 
+    // Method to instantiate boss bullets with applied forces
     private void InstantiateBossBullets()
     {
         int bulletCount = 25; // Number of boss bullets

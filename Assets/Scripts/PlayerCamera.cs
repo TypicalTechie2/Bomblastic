@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
@@ -10,12 +9,6 @@ public class PlayerCamera : MonoBehaviour
     private Vector3 originalPosition;
     public bool isMovingCamera;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void LateUpdate()
     {
@@ -25,14 +18,17 @@ public class PlayerCamera : MonoBehaviour
         }
     }
 
+    // Method to initiate a smooth camera movement to a specified position
     public void MoveCameraToPosition(Vector3 targetPosition)
     {
+        // If the camera is not moving, update its position based on the player's position and offset
         if (!isMovingCamera)
         {
             StartCoroutine(MoveCameraSmoothly(targetPosition));
         }
     }
 
+    // Coroutine to move the camera smoothly from its current position to the target position
     IEnumerator MoveCameraSmoothly(Vector3 targetPosition)
     {
         isMovingCamera = true;

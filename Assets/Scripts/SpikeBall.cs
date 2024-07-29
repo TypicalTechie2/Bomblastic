@@ -13,11 +13,6 @@ public class SpikeBall : MonoBehaviour
         rb.AddForce(new Vector3(speed, 0, speed), ForceMode.Impulse);
     }
 
-    private void Update()
-    {
-
-    }
-
     void OnCollisionEnter(Collision collision)
     {
         // Calculate a new direction based on the collision normal

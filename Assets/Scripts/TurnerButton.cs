@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TurnerButton : MonoBehaviour
@@ -10,23 +8,14 @@ public class TurnerButton : MonoBehaviour
     public bool hasPushedButton = false;
     private PlayerCamera playerCameraScript;
 
+    // Method called when the script instance is being loaded
     private void Awake()
     {
         animator = GetComponent<Animator>();
         playerCameraScript = GameObject.Find("Main Camera").GetComponent<PlayerCamera>();
     }
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    // Method called when another collider enters the trigger collider
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Player")

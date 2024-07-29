@@ -15,6 +15,7 @@ public class VolumeControl : MonoBehaviour
         volumeSlider.onValueChanged.AddListener(OnVolumeSliderChanged);
     }
 
+    // Method to set the volume as per the play slider value
     private void OnVolumeSliderChanged(float volume)
     {
         // Update the volume in the VolumeManager

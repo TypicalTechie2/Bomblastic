@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
 
@@ -12,12 +11,6 @@ public class BombBullet : MonoBehaviour
     void Start()
     {
         spawnManagerScript = FindObjectOfType<SpawnManager>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     private void OnTriggerEnter(Collider other)

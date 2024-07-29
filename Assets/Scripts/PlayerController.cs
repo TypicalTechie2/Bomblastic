@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
@@ -22,7 +21,6 @@ public class PlayerController : MonoBehaviour
     public int currentScore;
     public int currentHintCount;
     public int totalHintCount = 4;
-    public int butterflyCollectCount;
     public AudioSource playerAudio;
     public AudioClip playerHitClip;
     public AudioClip bombSpawnClip;
@@ -53,39 +51,35 @@ public class PlayerController : MonoBehaviour
     public Image[] keysActivationImage;
     public SceneTransition sceneTransitionScript;
 
-    private void Awake()
-    {
-
-    }
-
     // Start is called before the first frame update
     void Start()
     {
+        // Initialize game state
         isGameActive = true;
         bombPlanted = false;
         keyObtained = false;
         keyCount = 0;
         currentHintCount = 0;
-        butterflyCollectCount = 0;
 
+        // Set initial score display
         scoreText.text = "Score: " + ScoreManager.instance.currentScore.ToString();
 
 #if UNITY_EDITOR
-    // Check if the active build target is Android
-    if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android)
-    {
-        // Enable joystick, toggleImage, and BombButton Background Image
-        joystick.gameObject.SetActive(true);
-        gameManagerScript.toggleImage.gameObject.SetActive(true);
-        gameManagerScript.BombButtonBackgroundImage.gameObject.SetActive(true);
-    }
-    else
-    {
-        // Disable joystick, toggleImage, and BombButton Background Image
-        joystick.gameObject.SetActive(false);
-        gameManagerScript.toggleImage.gameObject.SetActive(false);
-        gameManagerScript.BombButtonBackgroundImage.gameObject.SetActive(false);
-    }
+        // Check if the active build target is Android
+        if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android)
+        {
+            // Enable joystick, toggleImage, and BombButton Background Image
+            joystick.gameObject.SetActive(true);
+            gameManagerScript.toggleImage.gameObject.SetActive(true);
+            gameManagerScript.BombButtonBackgroundImage.gameObject.SetActive(true);
+        }
+        else
+        {
+            // Disable joystick, toggleImage, and BombButton Background Image
+            joystick.gameObject.SetActive(false);
+            gameManagerScript.toggleImage.gameObject.SetActive(false);
+            gameManagerScript.BombButtonBackgroundImage.gameObject.SetActive(false);
+        }
 #else
         // Enable joystick, toggleImage, and BombButton Background Image only on Android builds
         if (Application.platform == RuntimePlatform.Android)
@@ -106,14 +100,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Handle player movement
         MovePlayer();
 
+        // Handle bomb planting
         if (Input.GetKeyDown(KeyCode.Space) && !bombPlanted && !enteredPortal && !playerCameraScript.isMovingCamera && isGameActive)
         {
             PlantTheBomb();
             playerAudio.PlayOneShot(bombSpawnClip, 0.5f);
         }
 
+        // Set player layer based on camera movement
         if (playerCameraScript.isMovingCamera)
         {
             gameObject.layer = 10;
@@ -127,6 +124,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Reset Rigidbody velocity if no input
         if (!playerCameraScript.isMovingCamera && isGameActive && !enteredPortal)
         {
             // Reset Rigidbody velocity and angular velocity if no input
@@ -149,6 +147,7 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer()
     {
+        // Handle player movement and animations
         if (!playerCameraScript.isMovingCamera && isGameActive && !enteredPortal)
         {
             // Get joystick input
@@ -234,6 +233,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // Handle player collision with portal or final reward
         if (other.gameObject.CompareTag("Portal") || other.gameObject.CompareTag("FinalReward"))
         {
             Debug.Log("Entered Portal");
@@ -243,6 +243,7 @@ public class PlayerController : MonoBehaviour
             gameObject.layer = 10;
         }
 
+        // Handle player collision with key
         if (other.gameObject.CompareTag("Key"))
         {
             keyObtained = true;
@@ -258,6 +259,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(ActivatePortal());
         }
 
+        // Handle player collision with enemy, obstacle, or boss bullet
         if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Obstacle") || other.gameObject.CompareTag("Boss Bullet"))
         {
             isGameActive = false;
@@ -269,6 +271,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(ReactToEnemyCollide());
         }
 
+        // Handle player collision with star
         if (other.gameObject.CompareTag("Star"))
         {
             playerAudio.PlayOneShot(coinCollectClip, 1f);
@@ -278,24 +281,17 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject, 1f);
         }
 
+        // Handle player collision with hint
         if (other.gameObject.CompareTag("Hint"))
         {
             currentHintCount += 1;
             Debug.Log("Current Hint Count: " + currentHintCount);
         }
-
-        if (other.gameObject.CompareTag("Butterfly"))
-        {
-            butterflyCollectCount += 1;
-            Debug.Log("Current Hint Count: " + butterflyCollectCount);
-            other.gameObject.layer = 10;
-            Destroy(other.gameObject, 0.1f);
-
-        }
     }
 
     private void OnCollisionEnter(Collision other)
     {
+        // Handle collision with obstacle
         if (other.gameObject.CompareTag("Obstacle") && !playerCameraScript.isMovingCamera)
         {
             other.gameObject.layer = 10;
@@ -311,7 +307,7 @@ public class PlayerController : MonoBehaviour
 
     private void PlantTheBomb()
     {
-        bombPlanted = true;
+        bombPlanted = true; // Set bomb planted flag to true
         GameObject spawnedBomb = Instantiate(bombPrefab, transform.position, transform.rotation);
 
         Rigidbody spawnedBombRb = spawnedBomb.GetComponent<Rigidbody>();
@@ -321,6 +317,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator ActivatePortal()
     {
+        // Activate portal if enough keys are obtained
         if (keyCount == 3)
         {
             playerAudio.PlayOneShot(portalOpenClip, 1f);
@@ -365,6 +362,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator RotateOnPortalEnter()
     {
+        // Hide UI elements and joystick when entering the portal
         gameManagerScript.pauseButton.gameObject.SetActive(false);
         gameManagerScript.toggleImage.gameObject.SetActive(false);
         gameManagerScript.playerJoystick.gameObject.SetActive(false);

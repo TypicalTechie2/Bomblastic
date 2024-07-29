@@ -11,12 +11,7 @@ public class SceneTransition : MonoBehaviour
     public float transitionTime = 1.5f;
     private int lastSceneIndex = 8;
 
-    private void Start()
-    {
-
-    }
-
-
+    // Coroutine to handle the end screen transition, loading the next scene or displaying the victory image
     public IEnumerator EndScreenTransition()
     {
         yield return new WaitForSecondsRealtime(2.25f);
@@ -42,6 +37,7 @@ public class SceneTransition : MonoBehaviour
         }
     }
 
+    // Coroutine to handle the start screen transition, resetting to the main menu
     public IEnumerator StartScreenTransition()
     {
         transitionAnim.SetTrigger("start");

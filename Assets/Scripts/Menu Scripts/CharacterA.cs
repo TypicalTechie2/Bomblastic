@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterA : MonoBehaviour
@@ -20,11 +19,14 @@ public class CharacterA : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // If there are no waypoints or the character is waiting, do nothing
         if (wayPoints.Length == 0 || isWaiting) return;
 
+        // Move the character towards the current waypoint
         MoveToWaypoint();
     }
 
+    // Moves the character to the current waypoint
     void MoveToWaypoint()
     {
         // Move towards the current waypoint
@@ -44,6 +46,7 @@ public class CharacterA : MonoBehaviour
         }
     }
 
+    // Coroutine to handle waiting at a waypoint
     IEnumerator WaitAtWaypoint()
     {
         isWaiting = true;
